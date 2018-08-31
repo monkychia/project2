@@ -1,5 +1,23 @@
 DROP DATABASE IF EXISTS exampledb;
 CREATE DATABASE exampledb;
+USE exampledb;
 
-DROP DATABASE IF EXISTS testdb;
-CREATE DATABASE testdb;
+CREATE TABLE foodList(
+    id INTEGER AUTO_INCREMENT not null,
+    itemName VARCHAR(50) not null,
+    costPer DECIMAL(10,2) not null,
+    glutenFree BOOLEAN DEFAULT false,
+    primary key(id)
+
+);
+
+INSERT INTO foodList(itemName, costPer, glutenFree)
+VALUES ('Tomato Bruschetta', .50, false),
+('Fish Taco', 1.75, false),
+('Kid Hot Dog', .85 ,false),
+('Kid Mac N Cheese', 1.19 ,false),
+('Chicken Strips', .89 ,false),
+('Spagehtti Meatballs', 1.26 ,false),
+('Tofu Curry', 2.99, true);
+
+SELECT * FROM foodList ORDER BY id;
