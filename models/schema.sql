@@ -21,3 +21,13 @@ VALUES ('Tomato Bruschetta', .50, false),
 ('Tofu Curry', 2.99, true);
 
 SELECT * FROM foodList ORDER BY id;
+
+
+CREATE TABLE newEvent(
+    id INTEGER AUTO_INCREMENT not null,
+    itemOne VARCHAR(40) not null,
+    itemTwo VARCHAR(40) not null,
+    itemThree VARCHAR(40) not null,
+    itemFour VARCHAR(40) not null,
+    primary key (id);
+)
