@@ -1,3 +1,21 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+.approved {
+  margin-left: 20px;
+  background-color: yellow;
+}
+
+.pending {
+  margin-right: -20px;
+  background-color: lightblue;
+}
+
+#new-event {
+  margin-top: 50px;
+}
+
+#main-footer {
+  font-size: 10px;
+}
