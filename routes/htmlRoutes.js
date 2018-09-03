@@ -1,21 +1,30 @@
 var db = require("../models");
+var path = require("path");
 
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.Example.findAll({}).then(function(dbExamples) {
+    db.FoodList.findAll({}).then(function(dbFoodList) {
+      console.log("data: ", JSON.parse(dbFoodList));
       res.render("index", {
         msg: "Welcome!",
-        examples: dbExamples
+        //examples: dbExample
+        foodList: dbFoodList
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.render("example", {
-        example: dbExample
+  app.get("/foodList/:id", function(req, res) {
+    db.FoodList.findOne({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(dbFoodList) {
+      res.render("foodList", {
+        //example: dbExample
+        foodList: dbFoodList
       });
     });
   });
