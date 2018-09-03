@@ -6,7 +6,7 @@ CREATE TABLE foodList(
     id INTEGER auto_increment not null,
     itemName VARCHAR(50) not null,
     costPer DECIMAL(10,2) not null,
-    category VARCHAR not null,
+    category VARCHAR (50) not null,
     vegan BOOLEAN default false,
     glutenFree BOOLEAN default false,
     primary key(id);
