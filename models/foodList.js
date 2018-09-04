@@ -1,5 +1,5 @@
 module.exports = function(sequelize, DataTypes) {
-  var FoodList = sequelize.define("FoodLists", {
+  var FoodList = sequelize.define("FoodList", {
     itemName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -13,11 +13,11 @@ module.exports = function(sequelize, DataTypes) {
     },
     vegan: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: false
     },
     glutenFree: {
       type: DataTypes.BOOLEAN,
-      allowNull: false
+      defaultValue: false
     },
   },
   {
