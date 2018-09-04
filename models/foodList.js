@@ -1,22 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-  var FoodList = sequelize.define("FoodList", {
+  var FoodList = sequelize.define("FoodLists", {
     itemName: {
       type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: false
     },
     costPer: {
       type: DataTypes.DECIMAL,
-      allowNull: false,
-      validate: {
-        len: [1]
-      }
+      allowNull: false
     },
     category: {
-      type: DataTypes.STRING,
-      defaultValue: "Appetizer"
+      type: DataTypes.STRING
     },
     vegan: {
       type: DataTypes.BOOLEAN,
@@ -25,7 +18,10 @@ module.exports = function(sequelize, DataTypes) {
     glutenFree: {
       type: DataTypes.BOOLEAN,
       allowNull: false
-    }
+    },
+  },
+  {
+      freezeFoodLists: true
   });
   return FoodList;
 };

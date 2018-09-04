@@ -1,4 +1,4 @@
-INSERT INTO foodList(itemName, costPer, category, vegan, glutenFree)
+INSERT INTO foodLists(itemName, costPer, category, vegan, glutenFree)
 VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Olive Tapenade', .89, 'Appetizer', true, false),
 ('Kid Hot Dog', 1.19 , 'Kids Food', false, false),

@@ -2,7 +2,7 @@ DROP DATABASE IF EXISTS exampledb;
 CREATE DATABASE exampledb;
 USE exampledb;
 
-CREATE TABLE foodList(
+CREATE TABLE FoodLists(
     id INTEGER auto_increment not null,
     itemName VARCHAR(50) not null,
     costPer DECIMAL(10,2) not null,
@@ -12,7 +12,7 @@ CREATE TABLE foodList(
     primary key(id)
 );
 
-INSERT INTO foodList(itemName, costPer, category, vegan, glutenFree)
+INSERT INTO FoodLists(itemName, costPer, category, vegan, glutenFree)
 VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Olive Tapenade', .89, 'Appetizer', true, false),
 ('Kid Hot Dog', 1.19 , 'Kids Food', false, false),
@@ -53,7 +53,7 @@ VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 
 
 
-SELECT * FROM foodList ORDER BY id;
+SELECT * FROM FoodLists ORDER BY id;
 
 
 /*CREATE TABLE newEvent(

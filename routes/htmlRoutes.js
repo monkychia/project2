@@ -4,27 +4,27 @@ var path = require("path");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.FoodList.findAll({}).then(function(dbFoodList) {
-      console.log("data: ", JSON.parse(dbFoodList));
+    db.FoodLists.findAll({}).then(function(dbFoodList) {
+      //console.log("data: ", JSON.parse(dbFoodList));
       res.render("index", {
         msg: "Welcome!",
         //examples: dbExample
-        foodList: dbFoodList
+        example: dbFoodList
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/foodList/:id", function(req, res) {
-    db.FoodList.findOne({
+  app.get("/example/:id", function(req, res) {
+    db.FoodLists.findOne({
       where: {
         id: req.params.id
       }
     })
     .then(function(dbFoodList) {
-      res.render("foodList", {
+      res.render("FoodLists", {
         //example: dbExample
-        foodList: dbFoodList
+        example: dbFoodList
       });
     });
   });

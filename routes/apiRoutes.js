@@ -1,62 +1,18 @@
 var db = require("../models");
 
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/example/", function(req, res) {
-    db.Example.findAll({})
-    .then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-  app.get("/api/example/category/:category", function(req, res){
-    db.Example.findAll({
-      where: {
-        category: req.params.category
-      }
-    })
-    .then(function(dbExample) {
-      res.json(dbExample)
-    });
-  });
-
-  // Create a new example
-  app.post("/api/example", function(req, res) {
-    db.Example.create({
-      itemName: req.body.itemName,
-      costPer:req.body.costPer,
-      category: req.body.category,
-      vegan: req.body.vegan,
-      glutenFree: req.body.glutenFree
-    })
-    .then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/example/:id", function(req, res) {
-    db.Example.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-    .then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-
 //*********************************************************************
   //Get all foodList
-  app.get("/api/foodList/", function(req, res) {
-    db.FoodList.findAll({})
+  app.get("/api/FoodLists/", function(req, res) {
+    db.FoodLists.findAll({})
     .then(function(results){
       res.json(results);
     });
   });
 
   //Create new foodList
-  app.post("/api/foodList", function(req, res){
-    db.FoodList.create({
+  app.post("/api/FoodLists", function(req, res){
+    db.FoodLists.create({
       itemName: req.body.itemName,
       costPer:req.body.costPer,
       category: req.body.category,
@@ -69,8 +25,8 @@ module.exports = function(app) {
   });
 
   //Delete an item from the foodList
-  app.delete("api/foodList/:id", function(req, res){
-    db.FoodList.destroy({
+  app.delete("api/FoodLists/:id", function(req, res){
+    db.FoodLists.destroy({
       where: {
         id: req.params.id
       }
@@ -81,8 +37,8 @@ module.exports = function(app) {
   });
 
   //Update an item from the foodList
-  app.put("api/foodList/:id", function(req, res){
-    db.FoodList.update({
+  app.put("api/FoodLists/:id", function(req, res){
+    db.FoodLists.update({
       itemName: req.body.itemName
     },{
       where : {
