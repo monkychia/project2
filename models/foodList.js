@@ -18,10 +18,8 @@ module.exports = function(sequelize, DataTypes) {
     glutenFree: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    },
-  },
-  {
-      freezeFoodLists: true
-  });
+     }
+   }
+);
   return FoodList;
 };

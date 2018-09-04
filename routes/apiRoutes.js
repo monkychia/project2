@@ -2,16 +2,16 @@ var db = require("../models");
 
 module.exports = function(app) {
 
-  //Get all foodList
-  app.get("/api/foodList/", function(req, res) {
+  //Get all FoodList
+  app.get("/api/FoodList/", function(req, res) {
     db.FoodList.findAll({})
     .then(function(results){
       res.json(results);
     });
   });
 
-  //Create new foodList
-  app.post("/api/foodList", function(req, res){
+  //Create new FoodList
+  app.post("/api/FoodList", function(req, res){
     db.FoodList.create({
       itemName: req.body.itemName,
       costPer:req.body.costPer,
@@ -24,8 +24,8 @@ module.exports = function(app) {
     });
   });
 
-  //Delete an item from the foodList
-  app.delete("api/foodList/:id", function(req, res){
+  //Delete an item from the FoodList
+  app.delete("/api/FoodList/:id", function(req, res){
     db.FoodList.destroy({
       where: {
         id: req.params.id
@@ -36,8 +36,8 @@ module.exports = function(app) {
     });
   });
 
-  //Update an item from the foodList
-  app.put("api/foodList/:id", function(req, res){
+  //Update an item from the FoodList
+  app.put("/api/FoodList/:id", function(req, res){
     db.FoodList.update({
       itemName: req.body.itemName
     },{
