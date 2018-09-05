@@ -17,11 +17,9 @@
     "eslint": "^4.19.1",
     "eslint-plugin-html": "^4.0.5",
     "eslint-plugin-react": "^7.11.1",
-    "body-parser": "^1.18.3",
-    "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "express-handlebars": "^3.0.0",
-    "mysql2": "^1.5.3",
+    "mysql2": "^1.6.1",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
@@ -32,5 +30,18 @@
     "eslint-plugin-prettier": "^2.6.2",
     "mocha": "^5.2.0",
     "prettier": "^1.13.7"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/monkychia/project2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/monkychia/project2/issues"
+  },
+  "homepage": "https://github.com/monkychia/project2#readme"
 }
