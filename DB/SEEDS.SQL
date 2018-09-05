@@ -35,4 +35,4 @@ VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Sausage Stuffed Creminis', 1.70, 'Appetizer', false, true),
 ('Chips and Salsa', .99, 'Appetizer', true, true),
 ('Grilled Portabello', 8.29, 'Entree', true, true),
-('Herb Polenta Cake', 1.99, 'Sides', true, true);
+('Herb Polenta Cake', 1.99, 'Sides', true, true); 

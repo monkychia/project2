@@ -54,5 +54,3 @@ VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Herb Polenta Cake', 1.99, 'Sides', true, true);
 
 SELECT * FROM FoodLists ORDER BY id;
-
-
