@@ -7,20 +7,20 @@ module.exports = function(app) {
     db.FoodList.findAll({}).then(function(dbFoodList) {
       res.render("index", {
         msg: "Welcome!",
-        FoodList: dbFoodList
+        foodList: dbFoodList
       });
     });
   });
 
   // Load example page and pass in an example by id
-  app.get("/FoodList/:id", function(req, res) {
+  app.get("/foodList/:id", function(req, res) {
     db.FoodList.findOne({
        where: {
           id: req.params.id
         }
        }).then(function(dbFoodList) {
       res.render("index", {
-        FoodList: dbFoodList
+        foodList: dbFoodList
       });
     });
   });
@@ -35,13 +35,13 @@ module.exports = function(app) {
       glutenFree: req.body.glutenFree
     }).then(function(results){
       res.render("create", {
-        FoodList: results
+        foodList: results
       });
     });
   });
 
   //Update an item
-  app.put("/api/FoodList/:id", function(req, res){
+  app.put("/api/foodList/:id", function(req, res){
     db.FoodList.update({
       where: {
         id : req.params.id
@@ -54,14 +54,14 @@ module.exports = function(app) {
   });
 
   //Delete an item
-  app.delete("/api/FoodList/:id", function(req, res){
+  app.delete("/api/foodList/:id", function(req, res){
     db.FoodList.destroy({
       where: {
         id: req.params.id
       }
     }).then(function(results){
       res.render("index", {
-        FoodList: results
+        foodList: results
       });
     });
   });
