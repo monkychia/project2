@@ -1,4 +1,4 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var FoodList = sequelize.define("FoodList", {
     itemName: {
       type: DataTypes.STRING,
@@ -18,8 +18,16 @@ module.exports = function(sequelize, DataTypes) {
     glutenFree: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-     }
-   }
-);
+    }
+  });
+
+  FoodList.associate = function (models) {
+    FoodList.belongsTo(models.EventList, {
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
+
   return FoodList;
 };
