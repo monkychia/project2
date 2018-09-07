@@ -9,7 +9,9 @@ CREATE TABLE FoodLists(
     category VARCHAR(50) not null,
     vegan BOOLEAN default false,
     glutenFree BOOLEAN default false,
-    primary key(id)
+    primary key(id),
+    createdAt TIMESTAMP not null,	
+    updatedAt TIMESTAMP default NOW()
 );
 
 INSERT INTO FoodLists(itemName, costPer, category, vegan, glutenFree)
