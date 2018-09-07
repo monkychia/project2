@@ -18,7 +18,8 @@ module.exports = function(sequelize, DataTypes) {
     glutenFree: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
-    }
-  });
+     }
+   }
+);
   return FoodList;
 };

@@ -6,15 +6,13 @@ CREATE TABLE FoodLists(
     id INTEGER auto_increment not null,
     itemName VARCHAR(50) not null,
     costPer DECIMAL(10,2) not null,
-    category VARCHAR (50) not null,
+    category VARCHAR(50) not null,
     vegan BOOLEAN default false,
     glutenFree BOOLEAN default false,
-     createdAt TIMESTAMP not null,
-     updatedAt TIMESTAMP default NOW(),
     primary key(id)
 );
 
-INSERT INTO FoodLists (itemName, costPer, category, vegan, glutenFree)
+INSERT INTO FoodLists(itemName, costPer, category, vegan, glutenFree)
 VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Olive Tapenade', .89, 'Appetizer', true, false),
 ('Kid Hot Dog', 1.19 , 'Kids Food', false, false),
@@ -53,16 +51,5 @@ VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Grilled Portabello', 8.29, 'Entree', true, true),
 ('Herb Polenta Cake', 1.99, 'Sides', true, true);
 
-
-
 SELECT * FROM FoodLists ORDER BY id;
 
-
-/*CREATE TABLE newEvent(
-    id INTEGER AUTO_INCREMENT not null,
-    itemOne VARCHAR(40) not null,
-    itemTwo VARCHAR(40) not null,
-    itemThree VARCHAR(40) not null,
-    itemFour VARCHAR(40) not null,
-    primary key (id);
-)
