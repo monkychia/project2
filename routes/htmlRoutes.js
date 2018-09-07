@@ -4,10 +4,10 @@ var db = require("../models");
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
-    db.FoodList.findAll({}).then(function(dbFoodList) {
+    db.FoodList.findAll({}).then(function(results) {
       res.render("index", {
         msg: "Welcome!",
-        foodList: dbFoodList
+        foodList: results
       });
     });
   });
@@ -18,15 +18,15 @@ module.exports = function(app) {
        where: {
           id: req.params.id
         }
-       }).then(function(dbFoodList) {
+      }).then(function(results) {
       res.render("index", {
-        foodList: dbFoodList
+        foodList: results
       });
     });
   });
 
   //Create an item
-  app.post("/api/foodList", function(req, res){
+  app.post("/api/foodList/", function(req, res){
     db.FoodList.create({
       itemName: req.body.itemName,
       costPer:req.body.costPer,

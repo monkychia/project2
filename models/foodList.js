@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
-  var FoodList = sequelize.define("FoodList", {
+  var FoodList = sequelize.define("foodLists", {
+    // id: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   primaryKey: true
+    // },
     itemName: {
       type: DataTypes.STRING,
       allowNull: false
@@ -19,7 +24,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.BOOLEAN,
       defaultValue: false
      }
-   }
-);
+   },
+   {
+     tableName: "foodList"
+   });
   return FoodList;
 };

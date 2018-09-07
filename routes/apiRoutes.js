@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   //Create new FoodList
-  app.post("/api/foodList", function(req, res){
+  app.post("/api/foodlist/", function(req, res){
     db.FoodList.create({
       itemName: req.body.itemName,
       costPer:req.body.costPer,
@@ -25,7 +25,7 @@ module.exports = function(app) {
   });
 
   //Delete an item from the FoodList
-  app.delete("/api/foodList/:id", function(req, res){
+  app.delete("/api/foodlist/:id", function(req, res){
     db.FoodList.destroy({
       where: {
         id: req.params.id
