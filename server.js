@@ -1,7 +1,3 @@
-// require("dotenv-json")();
-// console.log(process.env.public_api_key);
-
-
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
