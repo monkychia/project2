@@ -25,7 +25,8 @@ CREATE TABLE EventLists(
     additionalInfo VARCHAR(300) null,
     primary key(id),
     createdAt TIMESTAMP not null,	
-    updatedAt TIMESTAMP default NOW()
+    updatedAt TIMESTAMP default NOW(),
+    eventListId INTEGER
 );
 
 SELECT * FROM EventLists ORDER BY id;
