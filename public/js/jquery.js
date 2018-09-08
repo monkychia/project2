@@ -6,6 +6,12 @@ $(document).on("click", ".dropdown-item", function(){
     $("#"+buttonID).text($(this).text());
     console.log("it happened", buttonID,$(buttonID).text());
 });
+
+$(document).on("click", ".dropdown-item", function(){
+    var x = ($(this).attr("id")).replace(/\D/g,'');
+    $("#dietarySelection"+x).removeClass("disabled");
+});
+
 $("#newFoodRow").on("click", function(){
     numbOfRows++;
     newCategorySelector();
@@ -18,7 +24,7 @@ $("#newFoodRow").on("click", function(){
 function newCategorySelector(){
    
     var dropDown = $("<div class='dropdown mb-3'>");
-    var categorySelect = $("<button class='btn btn-default dropdown-toggle'>");
+    var categorySelect = $("<button class='btn btn-default dropdown-toggle categorySelection'>");
     categorySelect.attr({ "type":"button", "id":"categorySelection" +numbOfRows, "data-toggle":"dropdown", "aria-haspopup":"true","aria-expanded":"false" });
     categorySelect.text("Select Category");
     categorySelect.appendTo(dropDown);
@@ -40,7 +46,7 @@ function newCategorySelector(){
 function newFoodSelector(){
    
     var dropDown = $("<div class='dropdown mb-3'>");
-    var foodSelect = $("<button class='btn btn-default dropdown-toggle'>");
+    var foodSelect = $("<button class='btn btn-default dropdown-toggle disabled'>");
     foodSelect.attr({ "type":"button", "id":"foodSelection", "data-toggle":"dropdown", "aria-haspopup":"true","aria-expanded":"false" });
     foodSelect.text("Select food");
     foodSelect.appendTo(dropDown);
@@ -55,6 +61,8 @@ function newFoodSelector(){
         anchor.text(foodArray[i].toString());
         console.log(anchor);
     }
+    foodSelect.appendTo(dropDown);
+    $("#createNewFoodSelect").append(dropDown);
 }
 // +++++++++++++++++++++++++++++++THIS FUNCTION WILL CREATE AN AMOUNT SELECTOR FOR A NEW ROW +++++++++++++++++++++++++++++++//
 function newAmountSelector(){
@@ -78,9 +86,9 @@ function newAmountSelector(){
 // +++++++++++++++++++++++++++++++THIS FUNCTION WILL CREATE A DIERTY RESTRICTION SELECTOR FOR A NEW ROW +++++++++++++++++++++++++++++++//
 function newDietarySelector(){
 
-    var dietaryArray = ["Vegan", "Gluten Free", "Both"];
+    var dietaryArray = ["Vegan", "Gluten Free", "Both", "Neither"];
     var dropDown = $("<div class='dropdown mb-3'>");
-    var dietarySelect = $("<button class='btn btn-default dropdown-toggle'>");
+    var dietarySelect = $("<button class='btn btn-default dropdown-toggle disabled'>");
     dietarySelect.attr({ "id":"dietarySelection"+numbOfRows,"type":"button","data-toggle":"dropdown","aria-haspopup":"true","aria-expanded":"false" });
     dietarySelect.text("Dietary Restrictions");
     dietarySelect.appendTo(dropDown);
@@ -107,5 +115,5 @@ $(document).ready(function () {
         container: container,
         todayHighlight: true,
         autoclose: true,
-    })
-})
+    });
+});
