@@ -9,9 +9,9 @@ CREATE TABLE FoodLists(
     category VARCHAR(50) not null,
     vegan BOOLEAN default false,
     glutenFree BOOLEAN default false,
-    primary key(id),
-    createdAt TIMESTAMP not null,	
-    updatedAt TIMESTAMP default NOW()
+    createdAt TIMESTAMP default NOW(),	
+    updatedAt TIMESTAMP default NOW(),
+    primary key(id)
 );
 
 SELECT * FROM FoodLists ORDER BY id;
@@ -23,10 +23,10 @@ CREATE TABLE EventLists(
     eventDate DATE not null,
     descriptionInfo VARCHAR(300) not null,
     additionalInfo VARCHAR(300) null,
-    primary key(id),
-    createdAt TIMESTAMP not null,	
+    createdAt TIMESTAMP default NOW(),	
     updatedAt TIMESTAMP default NOW(),
-    eventListId INTEGER
+    eventListId INTEGER,
+    primary key(id)
 );
 
 SELECT * FROM EventLists ORDER BY id;
