@@ -11,6 +11,7 @@ CREATE TABLE FoodLists(
     glutenFree BOOLEAN default false,
     createdAt TIMESTAMP default NOW(),	
     updatedAt TIMESTAMP default NOW(),
+    eventListId INTEGER,
     primary key(id)
 );
 
@@ -25,7 +26,6 @@ CREATE TABLE EventLists(
     additionalInfo VARCHAR(300) null,
     createdAt TIMESTAMP default NOW(),	
     updatedAt TIMESTAMP default NOW(),
-    eventListId INTEGER,
     primary key(id)
 );
 
