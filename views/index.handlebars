@@ -8,77 +8,41 @@
   <div class="col-md-6 approved">
     <h2>Approved Events</h2>
     <!-- We will use jQuery in our JS Script to dynamically insert approved events in this div -->
-    <div id="approved-display"></div>
+    <div id="approved-display">
+      <p>Mr Jones' Wedding</p>
+      <button class="btn btn-secondary update" type="submit">Update</button>
+      <button class="btn btn-secondary view" type="submit">View</button>
 
-    <p>Mr Jones' Wedding</p>
-    <button class="btn btn-secondary" type="submit">Update</button>
-    <button class="btn btn-secondary" type="submit">Delete</button>
+      <p>Celebration of Life</p>
+      <button class="btn btn-secondary update" type="submit">Update</button>
+      <button class="btn btn-secondary view" type="submit">View</button>
 
-    <p>Celebration of Life</p>
-    <button class="btn btn-secondary" type="submit">Update</button>
-    <button class="btn btn-secondary" type="submit">Delete</button>
-
-    <p>90th Birthday</p>
-    <button class="btn btn-secondary" type="submit">Update</button>
-    <button class="btn btn-secondary" type="submit">Delete</button>
+      <p>90th Birthday</p>
+      <button class="btn btn-secondary update" type="submit">Update</button>
+      <button class="btn btn-secondary view" type="submit">View</button>
+    </div>
   </div>
 
   <div class="col-md-6 pending">
     <h2>Pending Events</h2>
 
     <!-- We will use jQuery in our JS Script to dynamically insert pending events in this div -->
-    <div id="pending-display"></div>
+    <div id="pending-display">
 
-    <p>Some Event</p>
-    <button class="btn btn-secondary" type="submit">View</button>
-    <button class="btn btn-secondary" type="submit">Cancel</button>
+      <p>Some Event</p>
+      <button class="btn btn-secondary view" type="submit">View</button>
 
-    <p>Another Event</p>
-    <button class="btn btn-secondary" type="submit">View</button>
-    <button class="btn btn-secondary" type="submit">Cancel</button>
+      <p>Another Event</p>
+      <button class="btn btn-secondary view" type="submit">View</button>
+    </div>
   </div>
   
 </div>
 
-<div class="container">
-  <h2 class="text-center" id="new-event">NEW EVENTS</h2>
+<div class="row">
+  <button class="btn btn-primary" type="submit" id="create">NEW EVENTS</button>
 </div>
 
 <footer class="footer text-center" id="main-footer">
   <p>Copyright &copy; 2018, Catherine Chan, Sean Cooper, Reena Mahapatra, and Danny Nguyen</p>
 </footer>
-
-{{!--
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script> --}}
