@@ -1,6 +1,6 @@
 # project2
 
-** Team Mambers:**
+** Team Members:**
 ```
 - Catherine Chan
 - Danny Nguyen
