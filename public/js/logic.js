@@ -1,6 +1,6 @@
 var numbOfRows = 0;
 $(document).ready(function(){
-
+    
 $(document).on("click", ".dropdown-item", function(){
     var buttonID = $(this).attr("data-ref");
     $("#"+buttonID).text($(this).text());
