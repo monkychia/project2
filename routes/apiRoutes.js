@@ -66,7 +66,7 @@ module.exports = function (app) {
       eventName: req.body.eventName,
       contactName: req.body.contactName,
       eventDate: req.body.eventDate,
-      descriptionInfo: req.body.descriptionInfo,
+      description: req.body.description,
       additionalInfo: req.body.additionalInfo
     })
       .then(function (results) {
@@ -92,7 +92,7 @@ module.exports = function (app) {
       eventName: req.body.eventName,
       contactName: req.body.contactName,
       eventDate: req.body.eventDate,
-      descriptionInfo: req.body.descriptionInfo,
+      description: req.body.description,
       additionalInfo: req.body.additionalInfo
     }, {
         where: {
