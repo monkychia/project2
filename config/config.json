@@ -1,7 +1,6 @@
 {
   "development": {
     "username": "root",
-    "password": "bootcampsql123",
     "database": "exampledb",
     "host": "localhost",
     "dialect": "mysql"
