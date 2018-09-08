@@ -30,6 +30,15 @@ module.exports = function (app) {
     });
   });
 
+  //Load View Page
+  app.get("/view", function (req, res) {
+    db.FoodList.findAll({}).then(function (dbFoodList) {
+      res.render("view", {
+        foodList: dbFoodList
+      });
+    });
+  });
+
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
