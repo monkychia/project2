@@ -5,7 +5,7 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.FoodList.findAll({}).then(function(dbFoodList) {
-      res.render("index", {
+      res.render("create", {
         msg: "Welcome!",
         foodList: dbFoodList
       });
