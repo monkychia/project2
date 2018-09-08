@@ -1,3 +1,4 @@
+require("dotenv-json")();
 var fs = require("fs");
 var path = require("path");
 var Sequelize = require("sequelize");
@@ -5,6 +6,7 @@ var basename = path.basename(module.filename);
 var env = process.env.NODE_ENV || "development";
 var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
+var password = process.env.public_api_key;
 
 if (config.use_env_variable) {
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
@@ -12,7 +14,7 @@ if (config.use_env_variable) {
   var sequelize = new Sequelize(
     config.database,
     config.username,
-    config.password,
+    password,
     config
   );
 }
