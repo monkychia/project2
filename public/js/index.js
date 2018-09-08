@@ -1,17 +1,17 @@
-$(document).ready(function () {
-    $(document).on("click", ".view", function () {
+$(document).ready(function() {
+    $(document).on("click", ".view", function() {
         window.location.replace("/view");
     });
 
-    $(document).on("click", ".update", function () {
+    $(document).on("click", ".update", function() {
         window.location.replace("/update");
     });
 
-    $(document).on("click", "#create", function () {
+    $(document).on("click", "#create", function() {
         window.location.replace("/create");
     });
 
-    $("#newEventSubmit").on("click", function (event) {
+    $("#newEventSubmit").on("click", function(event) {
         event.preventDefault();
     
         console.log("You clicked me!");
@@ -28,7 +28,7 @@ $(document).ready(function () {
         // Send an AJAX POST-request with jQuery
         $.post("/api/eventlist", newEvent)
             // On success, run the following code
-            .then(function () {
+            .then(function() {
                 console.log("New event successfully created!");
             });
     
