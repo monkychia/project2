@@ -1,3 +1,4 @@
+USE exampledb;
 INSERT INTO FoodLists(itemName, costPer, category, vegan, glutenFree)
 VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Olive Tapenade', .89, 'Appetizer', true, false),
@@ -36,3 +37,6 @@ VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Chips and Salsa', .99, 'Appetizer', true, true),
 ('Grilled Portabello', 8.29, 'Entree', true, true),
 ('Herb Polenta Cake', 1.99, 'Sides', true, true);
+
+INSERT INTO EventLists(eventName,contactName,eventDate,descriptionInfo,additionalInfo)
+VALUES ('Mr. Jones Wedding', 'Mrs. Jones', '2018-09-18', 'Formal dinner party for 80 people.', 'Black and white linens requested, flower arrangements at each table.')
