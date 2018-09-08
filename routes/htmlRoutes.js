@@ -5,14 +5,14 @@ module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
     db.FoodList.findAll({}).then(function(dbFoodList) {
-      res.render("create", {
+      res.render("index", {
         msg: "Welcome!",
         foodList: dbFoodList
       });
     });
   });
 
-  // Load example page and pass in an example by id
+  // Load foodlist page and pass in an foodlist by id
   app.get("/foodList/:id", function(req, res) {
     db.FoodList.findOne({
        where: {
@@ -25,43 +25,24 @@ module.exports = function(app) {
     });
   });
 
-  //Create an item
-  app.post("/api/foodList", function(req, res){
-    db.FoodList.create({
-      itemName: req.body.itemName,
-      costPer:req.body.costPer,
-      category: req.body.category,
-      vegan: req.body.vegan,
-      glutenFree: req.body.glutenFree
-    }).then(function(results){
+  //Event route loads create.handlebars
+  app.get("/eventLists/", function(req, res){
+    db.EventList.findAll({}).then(function(results){
       res.render("create", {
-        foodList: results
+        eventList: results
       });
     });
   });
 
-  //Update an item
-  app.put("/api/foodList/:id", function(req, res){
-    db.FoodList.update({
+  //Event routes loads update.handlebars
+  app.get("/api/eventLists/:id", function(req, res){
+    db.EventList.findOne({
       where: {
         id : req.params.id
       }
     }).then(function(results){
       res.render("update", {
-        foodList: results
-      });
-    });
-  });
-
-  //Delete an item
-  app.delete("/api/foodList/:id", function(req, res){
-    db.FoodList.destroy({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(results){
-      res.render("index", {
-        foodList: results
+        eventList: results
       });
     });
   });
