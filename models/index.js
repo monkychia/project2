@@ -8,8 +8,11 @@ var config = require(__dirname + "/../config/config.json")[env];
 var db = {};
 var password = process.env.public_api_key;
 
-if (config.use_env_variable) {
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+// if (config.use_env_variable) {
+//   var sequelize = new Sequelize(process.env[config.use_env_variable]);
+
+if (process.env.JAWSDB_URL) {
+  var sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   var sequelize = new Sequelize(
     config.database,
