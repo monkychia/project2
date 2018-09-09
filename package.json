@@ -22,6 +22,7 @@
     "express-handlebars": "^3.0.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
+    "nodemailer": "^4.6.8",
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
