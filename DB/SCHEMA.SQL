@@ -17,16 +17,4 @@ CREATE TABLE FoodLists(
 
 SELECT * FROM FoodLists ORDER BY id;
 
-CREATE TABLE EventLists(
-    id INTEGER auto_increment not null,
-    eventName VARCHAR(50) not null,
-    contactName VARCHAR(50) not null,
-    eventDate DATE not null,
-    descriptionInfo VARCHAR(300) not null,
-    additionalInfo VARCHAR(300) null,
-    createdAt TIMESTAMP default NOW(),	
-    updatedAt TIMESTAMP default NOW(),
-    primary key(id)
-);
-
 SELECT * FROM EventLists ORDER BY id;
