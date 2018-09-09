@@ -11,10 +11,14 @@ $(document).ready(function() {
         window.location.replace("/create");
     });
 
+    $(document).on("click", "#viewButton", function() {
+        window.location.replace("/view");
+    });
+
+    // Eventlistener to POST New Event into DB upon Submit Button Click on Create Page
     $("#newEventSubmit").on("click", function(event) {
         event.preventDefault();
     
-        console.log("You clicked me!");
         //Make a newEvent object
         var newEvent = {
             eventName: $("#newEventName").val().trim(),
@@ -39,4 +43,24 @@ $(document).ready(function() {
         $("#newEventDescription").val("");
         // $("#additionalInfo").val("");
     });
+
+    // When the page loads, grab and display all of our Pending Events on Index Page
+    $.get("/api/eventlist", function(data) {
+
+        if (data.length != 0) {
+
+            for (var i = 0; i < data.length; i++) {
+                var row = $("<div>");
+                var button = $("<button>View</button>");
+                row.addClass("pendEvent");
+                button.addClass("btn btn-secondary");
+                button.attr("id", "viewButton");
+
+                row.append("<p>" + data[i].eventName + "</p>");
+                row.append(button);
+                $("#pending-display").append(row);
+            }
+        }
+    });
+
 });
