@@ -21,40 +21,6 @@ module.exports = function (app) {
       glutenFree: req.body.glutenFree
     })
       .then(function (results) {
-
-        // console.log('----- i am in post', res);
-
-        // nodemailer.createTestAccount((err, account) => {
-        //   let transporter = nodemailer.createTransport({
-        //       host: 'smtp.gmail.com',
-        //       port: 587,
-        //       secure: false, 
-        //       auth: {
-        //         user: "projecttwo22@gmail.com", // sender's credentials
-        //         pass: "pr0ject2!"// sender's password
-        //       }
-        //   });
-
-        //   // setup email data with unicode symbols
-        //   let mailOptions = {
-        //       from: '"test <projecttwo22@gmail.com>', // sender address
-        //       to: 'learnafew@gmail.com', // list of receivers
-        //       subject: 'Hello ✔', 
-        //       text: 'Hello world?', // plain text body
-        //       html: '<b>Hello world?</b>' // html body
-        //   };
-
-        //   // send mail with defined transport object
-        //   transporter.sendMail(mailOptions, (error, info) => {
-        //       if (error) {
-        //           return console.log(error);
-        //       }
-        //       console.log('Message sent: %s', info.messageId);
-        //       console.log(info);
-        //       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        //   });
-        // });
-
         res.json(results);
       });
   });
