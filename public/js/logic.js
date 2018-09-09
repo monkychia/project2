@@ -1,15 +1,30 @@
 var numbOfRows = 0;
 $(document).ready(function(){
-    
+
 $(document).on("click", ".dropdown-item", function(){
     var buttonID = $(this).attr("data-ref");
     $("#"+buttonID).text($(this).text());
-    console.log("it happened", buttonID,$(buttonID).text());
 });
 
-$(document).on("click", ".dropdown-item", function(){
+$(document).on("click", ".catSelected", function(){
     var x = ($(this).attr("id")).replace(/\D/g,'');
-    $("#dietarySelection"+x).removeClass("disabled");
+    console.log(x);
+    console.log($("#"+$(this).attr("data-ref")).text());
+    $.post("/api/foodList", {"catSelection":$("#"+$(this).attr("data-ref")).text()}, function(data){
+    
+        $("#dietarySelection"+x).removeClass("disabled");
+    });
+});
+
+$(document).on("click", ".dietSelected", function(){
+    var x = ($(this).attr("id")).replace(/\D/g,'');
+    console.log(x);
+    console.log($("#"+$(this).attr("data-ref")).text());
+    $.post("/api/foodList", {"dietRestriction":$("#"+$(this).attr("data-ref")).text()}, function(data){
+    
+        $("#foodSelection"+x).removeClass("disabled");
+    });
+    
 });
 
 $("#newFoodRow").on("click", function(){
@@ -33,11 +48,10 @@ function newCategorySelector(){
     categoryList.attr("id", "selectedCategory");
 
     for(var i=0; i < categoryArray.length; i++){
-        var anchor = $("<a class='dropdown-item'>");
+        var anchor = $("<a class='dropdown-item catSelected'>");
         anchor.attr({"id": categoryArray[i].toString().toLowerCase().replace("'", "").split(' ').join('') + "-select" +numbOfRows, "data-ref": categorySelect.attr("id")});
         anchor.appendTo(categoryList);
         anchor.text(categoryArray[i].toString());
-        console.log(anchor);
     }
     categoryList.appendTo(dropDown);
     $("#createNewCategory").append(dropDown);
@@ -47,9 +61,14 @@ function newFoodSelector(){
    
     var dropDown = $("<div class='dropdown mb-3'>");
     var foodSelect = $("<button class='btn btn-default dropdown-toggle disabled'>");
-    foodSelect.attr({ "type":"button", "id":"foodSelection", "data-toggle":"dropdown", "aria-haspopup":"true","aria-expanded":"false" });
+    foodSelect.attr({ "type":"button", "id":"foodSelection"+numbOfRows, "data-toggle":"dropdown", "aria-haspopup":"true","aria-expanded":"false" });
     foodSelect.text("Select food");
     foodSelect.appendTo(dropDown);
+
+    $.get("/api/foodList", function(data){
+        console.log(data);
+    });
+
     var foodArray = [];
     var foodList = $("<div class='dropdown-menu'>");
     foodList.attr("id", "selectedfood");
@@ -97,11 +116,10 @@ function newDietarySelector(){
 
     for(var i=0; i < dietaryArray.length; i++){
 
-        var anchor = $("<a class='dropdown-item'>");
-        anchor.attr({ "id": dietaryArray[i].toString().toLowerCase().replace("'","").split(' ').join('')+"-select","data-ref":dietarySelect.attr("id") });
+        var anchor = $("<a class='dropdown-item dietSelected'>");
+        anchor.attr({ "id": dietaryArray[i].toString().toLowerCase().replace("'","").split(' ').join('')+"-select"+numbOfRows,"data-ref":dietarySelect.attr("id") });
         anchor.appendTo(dietaryList);
         anchor.text(dietaryArray[i].toString());
-        console.log(anchor);
     }
     dietaryList.appendTo(dropDown);
     $("#createNewDietary").append(dropDown);
