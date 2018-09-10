@@ -11,10 +11,6 @@ $(document).ready(function() {
         window.location.replace("/create");
     });
 
-    $(document).on("click", "#view", function() {
-        window.location.replace("/view");
-    });
-
     // Eventlistener to POST New Event into DB upon Submit Button Click on Create Page
     $("#newEventSubmit").on("click", function(event) {
         event.preventDefault();
