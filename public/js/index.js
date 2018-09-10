@@ -11,7 +11,7 @@ $(document).ready(function() {
         window.location.replace("/create");
     });
 
-    $(document).on("click", "#viewButton", function() {
+    $(document).on("click", "#view", function() {
         window.location.replace("/view");
     });
 
@@ -54,7 +54,7 @@ $(document).ready(function() {
                 var button = $("<button>View</button>");
                 row.addClass("pendEvent");
                 button.addClass("btn btn-secondary");
-                button.attr("id", "viewButton");
+                button.attr("id", "view");
 
                 row.append("<p>" + data[i].eventName + "</p>");
                 row.append(button);
