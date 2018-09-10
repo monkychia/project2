@@ -43,6 +43,8 @@ $(document).ready(function() {
     // When the page loads, grab and display all of our Pending Events on Index Page
     $.get("/api/eventlist", function(data) {
 
+        console.log(data);
+
         if (data.length != 0) {
 
             for (var i = 0; i < data.length; i++) {
@@ -50,7 +52,7 @@ $(document).ready(function() {
                 var button = $("<button>View</button>");
                 row.addClass("pendEvent");
                 button.addClass("btn btn-secondary");
-                button.attr("id", "view");
+                button.attr("id", "view-" + i);
 
                 row.append("<p>" + data[i].eventName + "</p>");
                 row.append(button);
