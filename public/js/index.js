@@ -41,24 +41,23 @@ $(document).ready(function() {
     });
 
     // When the page loads, grab and display all of our Pending Events on Index Page
-    $.get("/api/eventlist", function(data) {
-
-        console.log(data);
-
-        if (data.length != 0) {
-
-            for (var i = 0; i < data.length; i++) {
-                var row = $("<div>");
-                var button = $("<button>View</button>");
-                row.addClass("pendEvent");
-                button.addClass("btn btn-secondary view");
-                button.attr("id", "view-" + i);
-
-                row.append("<p>" + data[i].eventName + "</p>");
-                row.append(button);
-                $("#pending-display").append(row);
-            }
-        }
+    $.get("/api/eventList", function(data) {
+        data.forEach(event => {
+            let eventName = event.eventName;
+            let contactName = event.contactName;
+            let eventDate = moment(event.eventDate).format("LL");  
+            let description = event.description;
+            let additionalInfo = event.additionalInfo;
+            $("#pending-display").append(
+                `<div class="event">
+                    <p><b>Event Name:</b> ${eventName}</p>
+                    <p><b>Contact Name:</b> ${contactName}</p>
+                    <p><b>Event Date:</b> ${eventDate}</p>
+                    <p><b>Description:</b> ${description}</p>
+                    <p><b>Dishes Ordered:</b> ${additionalInfo}</p>
+                    <button class="btn btn-secondary view" type="submit">View</button>
+                </div>`);
+        })
     });
 
 });
