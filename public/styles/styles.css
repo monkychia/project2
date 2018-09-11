@@ -21,6 +21,38 @@
   margin: 50px auto;
 }
 
+h1{
+  text-align: center;
+  font-weight: bold;
+  font-style: oblique;
+  color: white;
+}
+
+.holder{
+  height: 750px;
+  border-color: #ff9900;
+  background: url("../img/footer.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+#center {
+  margin-top: 70px;
+  margin: auto;
+  border-style: solid;
+  border-color: #ff9900;
+  text-align: center;
+  width: 335px;
+  height: 160px;
+  background-blend-mode: lighten;
+  color: white;
+  font-size: 25px;
+}
+p {
+  text-align: center;
+  margin: auto;
+}
+
 #main-footer {
   font-size: 10px;
 }

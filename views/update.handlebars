@@ -1,0 +1,89 @@
+<div class="container update-page" style="margin-top:5%">
+    <div class="text-center">
+        <h2 id="newFormHeader">UPDATE EVENT</h2>
+    </div>
+
+<div class="container" style="margin-top:5%">
+<hr>
+  <form class = "form-group" id = "event-form">
+    <div class="row">
+      <div class="col-6">
+      <!-- Update Event Form begins-->
+        <form>
+          <div class="form-group">
+            <label>Name for event</label>
+            <input type="text" class="form-control" id="updateEventName">
+          </div>
+          <div class="form-group">
+            <label>Name of contact</label>
+            <input type="text" class="form-control" id="updateContactName">
+          </div>
+        </form>
+      </div>
+      <div class="col-6">
+      <!-- This is the date-picker form from bootstrap -->
+      <!-- HTML Form (wrapped in a .bootstrap-iso div) -->
+        <div class="bootstrap-iso">
+          <div class="container">
+            <div class="row">
+              <div class="col-6 col-lg-6 col-md-6 col-sm-6 col-xs-12" style="padding:0px; margin-top:3px">
+                <form method="post">
+                  <div class="form-group ">
+                    <label style = "font-family: 'Courier New', Courier, monospace; font-size: 14px;" class = "control-label " for="date">Date</label>
+                    <div class="input-group ">
+                      <div class="input-group-addon"><i class="fa fa-calendar"></i></div>
+                      <input class="form-control" id="updatedate" name="date"/></div>
+                  </div>
+                  <div class="form-group"></div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Event Description</label>
+          <textarea class="form-control" id="updateEventDescription" rows="3"></textarea>
+        </div>
+      </div><!-- col-6 end-->
+    </div>
+    <!-- This will be where we add rows of new Food selections -->
+    <hr>
+    <div class="row">
+      <div class="col-3 form-group">
+        <label for = "category">Select Category</label>
+        <select class = "custom-select" id="updateNewCategory">
+          <option selected value = "">All Categories</option>
+          <option value = "appetizer">Appetizer</option>
+          <option value = "dessert">Dessert</option>
+          <option value = "entree">Entree</option>
+          <option value = "kids Food">Kids Food</option>
+          <option value = "sides">Sides</option>
+        </select>
+      </div>
+      <div class="col-3 form-group">
+        <label for = "dietary">Select Dietary</label>
+        <select class = "custom-select" id="updateNewDietary">
+          <option selected value = "">Dietary Options`</option>
+          <option value = "vegan">Vegan</option>
+          <option value = "glutenFree">Gluten Free</option>
+          <option value = "both">Both</option>
+          <option value = "none">None</option>
+        </select>
+      </div>
+      <div class="col-3 form-group">
+        <label for = "foodItem">Select FoodItem</label>
+        <select class = "custom-select" id = "updateFoodSelect"></select>
+      </div>
+      <div class="col-3">
+        <label for = "amount">Amount</label>
+        <input type="text" class="form-control" id = "updateAmount">
+      </div>
+    </div>
+  </form>
+  <br>
+  <button class="btn btn-secondary" type="submit" id="updateEventSubmit">Submit</button>
+</div>
+</div>
+<footer class = "footer text-center" id = "main-footer">
+  <p>Copyright &copy; 2018, Catherine Chan, Sean Cooper, Reena Mahapatra, and Danny Nguyen</p>
+</footer>
