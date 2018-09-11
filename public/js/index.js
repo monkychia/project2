@@ -51,7 +51,7 @@ $(document).ready(function() {
                 var row = $("<div>");
                 var button = $("<button>View</button>");
                 row.addClass("pendEvent");
-                button.addClass("btn btn-secondary");
+                button.addClass("btn btn-secondary view");
                 button.attr("id", "view-" + i);
 
                 row.append("<p>" + data[i].eventName + "</p>");
