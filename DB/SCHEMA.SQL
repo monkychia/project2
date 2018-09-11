@@ -14,3 +14,5 @@ CREATE TABLE FoodLists(
     eventListId INTEGER,
     primary key(id)
 );
+
+SELECT * FROM FoodLists ORDER BY id;
