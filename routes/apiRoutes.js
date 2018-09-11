@@ -74,7 +74,7 @@ module.exports = function (app) {
       .then(function (results) {
 
         let body = `<div>Hello Manager,</div>
-                    <div><p>We received a new event request with the followings:</p><hr/>
+                    <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
                       <div>
                         <p>Event Name: ${req.body.eventName}</p>
                         <p>Contact Person: ${req.body.contactName}</p>
@@ -99,8 +99,7 @@ module.exports = function (app) {
           let mailOptions = {
               from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
               to: 'learnafew@gmail.com', // list of receivers
-              subject: `Hello ✔`, 
-              text: `Hello world?`, // plain text body
+              subject: `New Event Approval`, 
               html: body // html body
           };
 
