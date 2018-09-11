@@ -3,8 +3,8 @@ $(document).ready(function() {
         window.location.replace("/view");
     });
 
-    $(document).on("click", ".update", handleEventUpdate);
-    $(document).on("click", ".delete", handleEventDelete);
+$(document).on("click", ".update", handleEventUpdate);
+$(document).on("click", ".delete", handleEventDelete);
 
     $(document).on("click", "#create", function() {
         window.location.replace("/create");
