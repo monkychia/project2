@@ -37,20 +37,22 @@ $(document).ready(function() {
     // Grab and display all Pending Events on page load
     $.get("/api/eventlist", function(data) {
         data.forEach(event => {
-            let eventName = event.eventName;
-            let contactName = event.contactName;
-            let eventDate = moment(event.eventDate).format("LL");  
-            let description = event.description;
-            let additionalInfo = event.additionalInfo;
-            $("#pending-display").append(
-                `<div class="event">
-                    <p><b>Event Name:</b> ${eventName}</p>
-                    <p><b>Contact Name:</b> ${contactName}</p>
-                    <p><b>Event Date:</b> ${eventDate}</p>
-                    <p><b>Description:</b> ${description}</p>
-                    <p><b>Additional Information:</b> ${additionalInfo}</p>
-                    <button class="btn btn-secondary view" type="submit">View</button>
-                </div>`);
+            if (event.status == false) {
+                let eventName = event.eventName;
+                let contactName = event.contactName;
+                let eventDate = moment(event.eventDate).format("LL");  
+                let description = event.description;
+                let additionalInfo = event.additionalInfo;
+                $("#pending-display").append(
+                    `<div class="event">
+                        <p><b>Event Name:</b> ${eventName}</p>
+                        <p><b>Contact Name:</b> ${contactName}</p>
+                        <p><b>Event Date:</b> ${eventDate}</p>
+                        <p><b>Description:</b> ${description}</p>
+                        <p><b>Additional Information:</b> ${additionalInfo}</p>
+                        <button class="btn btn-secondary view" type="submit">View</button>
+                    </div>`);
+            }
         })
     });
 
