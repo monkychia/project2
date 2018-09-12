@@ -19,6 +19,11 @@ module.exports = function(sequelize, DataTypes) {
     additionalInfo: {
       type: DataTypes.STRING,
       allowNull: true
+     },
+     status: {
+       type: DATATypes.BOOLEAn,
+       allowNull: false,
+       default: false
      }
   });
 
