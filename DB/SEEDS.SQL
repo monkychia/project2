@@ -1,3 +1,4 @@
+USE exampledb;
 INSERT INTO FoodLists(itemName, costPer, category, vegan, glutenFree)
 VALUES ('Tomato Bruschetta', .89, 'Appetizer', true, false),
 ('Olive Tapenade', .89, 'Appetizer', true, false),
