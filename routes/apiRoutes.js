@@ -98,7 +98,7 @@ module.exports = function (app) {
           // setup email data with unicode symbols
           let mailOptions = {
               from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
-              to: 'learnafew@gmail.com', // list of receivers
+              to: 'learnafew@gmail.com, danny.danh.nguyen@gmail.com, seancooper.exe@gmail.com, reenam2017@gmail.com', // list of receivers
               subject: `New Event Approval`, 
               html: body // html body
           };
