@@ -145,4 +145,19 @@ module.exports = function (app) {
         res.json(results);
       });
   });
+
+  app.get("/api/foodObject/", function (req, res) {
+    console.log(req.query);
+    db.FoodList.findAll({
+      where: {
+        category: req.query.category,
+        vegan: req.query.vegan,
+        glutenFree: req.query.glutenFree
+      }
+    })
+      .then(function (results) {
+        res.json(results);
+      });
+  });
+  
 };

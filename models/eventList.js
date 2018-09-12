@@ -19,7 +19,12 @@ module.exports = function(sequelize, DataTypes) {
     additionalInfo: {
       type: DataTypes.STRING,
       allowNull: true
-     }
+    },
+    status: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+      defaultValue: false
+    }
   });
 
   EventList.associate = function(models) {
