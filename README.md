@@ -2,7 +2,8 @@
 
 ##Summary:
 * Catering App was developed to enhance communication and organization within a small team.
-* Using a centralized work space, all team members are able to view the most current and up-to-date information. Thus, mitigating miscommunication and promoting cohesiveness within the group.
+* Using a centralized work space, all team members are able to view the most up-to-date information.
+* Having the most accurate information available amongst team members promotes cohesiveness and mitigates miscommunication within a group.
 * Team members are able to create, update, and/or delete any event with the collective approval from the team.
 * When a new event is created or updates are made to an existing event, a notification is sent via email to all team members for viewing and approval.
 * With intuitive functionality, this application makes shared work flow within a small team easy and efficient.
