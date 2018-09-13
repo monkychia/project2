@@ -105,8 +105,10 @@ $(document).ready(function(){
                     $.get(`/api/foodObject/${selectedFood}`, function(food) {
                         itemName = food[0].itemName;
                         costPer = Number(food[0].costPer);
+                        foodListId = food[0].id;
                         payload.itemName = itemName;
                         payload.costPer = costPer;
+                        payload.foodListId = foodListId;
                     })
 
                 });
@@ -153,8 +155,10 @@ $(document).ready(function(){
                 // DO NOTHING
             })
         })
-        window.location.replace("/");
-
+        // Redirect to View page
+        let eventListId = payloads[0].eventListId;
+        let url = `/view?id=${eventListId}`;
+        window.location.replace(url);
     });
 
     // Date picker

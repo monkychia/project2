@@ -4,6 +4,10 @@ module.exports = function(sequelize, DataTypes) {
         type: DataTypes.INTEGER,
         allowNull: false
     },
+    foodListId: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
     itemName: {
         type: DataTypes.STRING,
         allowNull: false

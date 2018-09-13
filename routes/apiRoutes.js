@@ -3,6 +3,36 @@ const nodemailer = require('nodemailer');
 
 module.exports = function (app) {
 
+  function sendEmail(body) {
+    nodemailer.createTestAccount((err, account) => {
+      let transporter = nodemailer.createTransport({
+          host: 'smtp.gmail.com',
+          port: 587,
+          secure: false, 
+          auth: {
+            user: "projecttwo22@gmail.com", // sender's credentials
+            pass: "pr0ject2!"// sender's password
+          }
+      });
+
+      // setup email data with unicode symbols
+      let mailOptions = {
+          from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
+          to: 'learnafew@gmail.com, danny.danh.nguyen@gmail.com, seancooper.exe@gmail.com, reenam2017@gmail.com', // list of receivers
+          subject: `New Event Approval`, 
+          html: body // html body
+      };
+
+      // send mail with defined transport object
+      transporter.sendMail(mailOptions, (error, info) => {
+          if (error) {
+              return console.log(error);
+          }
+          console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+      });
+    });
+  }
+
   //Get all FoodList
   app.get("/api/foodlist/", function (req, res) {
     db.FoodList.findAll({})
@@ -73,44 +103,17 @@ module.exports = function (app) {
     })
       .then(function (results) {
 
-        // let body = `<div>Hello Manager,</div>
-        //             <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
-        //               <div>
-        //                 <p>Event Name: ${req.body.eventName}</p>
-        //                 <p>Contact Person: ${req.body.contactName}</p>
-        //                 <p>Event Date: ${req.body.eventDate}</p>
-        //                 <p>Description: ${req.body.description}</p>
-        //                 <p>Orders: ${req.body.additioanlInfo}</p>
-        //               </div>
-        //             </div>`;
-
-        // nodemailer.createTestAccount((err, account) => {
-        //   let transporter = nodemailer.createTransport({
-        //       host: 'smtp.gmail.com',
-        //       port: 587,
-        //       secure: false, 
-        //       auth: {
-        //         user: "projecttwo22@gmail.com", // sender's credentials
-        //         pass: "pr0ject2!"// sender's password
-        //       }
-        //   });
-
-        //   // setup email data with unicode symbols
-        //   let mailOptions = {
-        //       from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
-        //       to: 'learnafew@gmail.com, danny.danh.nguyen@gmail.com, seancooper.exe@gmail.com, reenam2017@gmail.com', // list of receivers
-        //       subject: `New Event Approval`, 
-        //       html: body // html body
-        //   };
-
-        //   // send mail with defined transport object
-        //   transporter.sendMail(mailOptions, (error, info) => {
-        //       if (error) {
-        //           return console.log(error);
-        //       }
-        //       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-        //   });
-        // });
+        let body = `<div>Hello Manager,</div>
+                    <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
+                      <div>
+                        <p>Event Name: ${req.body.eventName}</p>
+                        <p>Contact Person: ${req.body.contactName}</p>
+                        <p>Event Date: ${req.body.eventDate}</p>
+                        <p>Description: ${req.body.description}</p>
+                        <p>Additional Information: ${req.body.additioanlInfo}</p>
+                      </div>
+                    </div>`;
+        sendEmail(body);
 
         res.json(results);
       });
@@ -198,6 +201,7 @@ module.exports = function (app) {
   app.post("/api/ordersList", function(req, res) {
     db.OrdersList.create({
       eventListId: req.body.eventListId,
+      foodListId: req.body.foodListId,
       itemName: req.body.itemName,
       quantity: req.body.quantity,
       costPer: req.body.costPer,
