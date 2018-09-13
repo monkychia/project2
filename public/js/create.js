@@ -3,7 +3,6 @@ $(document).ready(function() {
   $("#newEventSubmit").on("click", function(event) {
     event.preventDefault();
 
-    console.log("clicked!")
     //Make a newEvent object
     var newEvent = {
         eventName: $("#newEventName").val().trim(),
