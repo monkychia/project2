@@ -9,7 +9,7 @@
 
 ##Design Layout
 [x] Main Page: In this page the approved events and pending events will be displayed with create, update, delete, and view buttons on it.
-[x] Create Page: A new event can be created by filling out the form information. The event details will then be sent via email to rest of the team members for approval. Simultaneously, the database will also be populated with the new event record.
+[x] Create Page: A new event can be created by filling out the form information. The event details will then be sent via email to the rest of the team members for approval. Simultaneously, the database will also be populated with the new event record.
 [x] View Page: A single event will be displayed with all of it's respective details. There will be delete, update, and approve buttons provided for modifications.
 [x] Update Page: Here an event can be updated with new specifics. Once the client submits their adjustments, the record in the mySQL database will be updated as well.
 
