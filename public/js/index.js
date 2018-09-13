@@ -14,7 +14,7 @@ $(document).ready(function() {
     // Grab and display all Approved Events on page load
     $.get("/api/eventlist", function(data) {
         data.forEach(event => {
-            if (event.status == true) {
+            if (event.status === true) {
                 let eventName = event.eventName;
                 let contactName = event.contactName;
                 let eventDate = moment(event.eventDate).format("LL");  
@@ -37,7 +37,7 @@ $(document).ready(function() {
     // Grab and display all Pending Events on page load
     $.get("/api/eventlist", function(data) {
         data.forEach(event => {
-            if (event.status == false) {
+            if (event.status === false) {
                 let eventName = event.eventName;
                 let contactName = event.contactName;
                 let eventDate = moment(event.eventDate).format("LL");  
