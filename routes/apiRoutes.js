@@ -73,44 +73,44 @@ module.exports = function (app) {
     })
       .then(function (results) {
 
-        let body = `<div>Hello Manager,</div>
-                    <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
-                      <div>
-                        <p>Event Name: ${req.body.eventName}</p>
-                        <p>Contact Person: ${req.body.contactName}</p>
-                        <p>Event Date: ${req.body.eventDate}</p>
-                        <p>Description: ${req.body.description}</p>
-                        <p>Orders: ${req.body.additioanlInfo}</p>
-                      </div>
-                    </div>`;
+        // let body = `<div>Hello Manager,</div>
+        //             <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
+        //               <div>
+        //                 <p>Event Name: ${req.body.eventName}</p>
+        //                 <p>Contact Person: ${req.body.contactName}</p>
+        //                 <p>Event Date: ${req.body.eventDate}</p>
+        //                 <p>Description: ${req.body.description}</p>
+        //                 <p>Orders: ${req.body.additioanlInfo}</p>
+        //               </div>
+        //             </div>`;
 
-        nodemailer.createTestAccount((err, account) => {
-          let transporter = nodemailer.createTransport({
-              host: 'smtp.gmail.com',
-              port: 587,
-              secure: false, 
-              auth: {
-                user: "projecttwo22@gmail.com", // sender's credentials
-                pass: "pr0ject2!"// sender's password
-              }
-          });
+        // nodemailer.createTestAccount((err, account) => {
+        //   let transporter = nodemailer.createTransport({
+        //       host: 'smtp.gmail.com',
+        //       port: 587,
+        //       secure: false, 
+        //       auth: {
+        //         user: "projecttwo22@gmail.com", // sender's credentials
+        //         pass: "pr0ject2!"// sender's password
+        //       }
+        //   });
 
-          // setup email data with unicode symbols
-          let mailOptions = {
-              from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
-              to: 'learnafew@gmail.com, danny.danh.nguyen@gmail.com, seancooper.exe@gmail.com, reenam2017@gmail.com', // list of receivers
-              subject: `New Event Approval`, 
-              html: body // html body
-          };
+        //   // setup email data with unicode symbols
+        //   let mailOptions = {
+        //       from: '"CaterApp Admin <projecttwo22@gmail.com>', // sender address
+        //       to: 'learnafew@gmail.com, danny.danh.nguyen@gmail.com, seancooper.exe@gmail.com, reenam2017@gmail.com', // list of receivers
+        //       subject: `New Event Approval`, 
+        //       html: body // html body
+        //   };
 
-          // send mail with defined transport object
-          transporter.sendMail(mailOptions, (error, info) => {
-              if (error) {
-                  return console.log(error);
-              }
-              console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
-          });
-        });
+        //   // send mail with defined transport object
+        //   transporter.sendMail(mailOptions, (error, info) => {
+        //       if (error) {
+        //           return console.log(error);
+        //       }
+        //       console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+        //   });
+        // });
 
         res.json(results);
       });
@@ -141,14 +141,13 @@ module.exports = function (app) {
           id: req.params.id
         }
       })
-      .then(function (results) {
+      .then(function(results) {
         res.json(results);
       });
   });
 
   //Get FoodObject with Restrictions
-  app.get("/api/foodObject/", function (req, res) {
-    console.log(req.query);
+  app.get("/api/foodObject/", function(req, res) {
     db.FoodList.findAll({
       where: {
         category: req.query.category,
@@ -156,9 +155,57 @@ module.exports = function (app) {
         glutenFree: req.query.glutenFree
       }
     })
-      .then(function (results) {
+      .then(function(results) {
         res.json(results);
       });
   });
+
+    //Get food row based on the food's name
+    app.get("/api/foodObject/:name", function(req, res) {
+      console.log(req.params.name);
+
+      db.FoodList.findAll({
+        where: {
+          itemName: req.params.name
+        }
+      })
+        .then(function(results) {
+          res.json(results);
+        });
+    });
   
+  // Get all events with corresponding orders
+  app.get("/api/orderslist", function(req, res) {
+    db.OrdersList.findAll({})
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+  // Get 1 event with it's orders
+  app.get("/api/ordersList/:eventListId", function(req, res) {
+    db.OrdersList.findAll({
+      where: {
+        eventListId: req.params.eventListId
+      }
+    })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+  // Create new event with it's corresponding orders
+  app.post("/api/ordersList", function(req, res) {
+    db.OrdersList.create({
+      eventListId: req.body.eventListId,
+      itemName: req.body.itemName,
+      quantity: req.body.quantity,
+      costPer: req.body.costPer,
+      total: req.body.total
+    })
+    .then(function (results) {
+      res.json(results);
+    });
+  });
+
 };
