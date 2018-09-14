@@ -92,6 +92,17 @@ module.exports = function (app) {
       });
   });
 
+  app.get("/api/eventlist/:id", function(req, res) {
+    db.EventList.findAll({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
   //Create new EventList
   app.post("/api/eventlist", function (req, res) {
     db.EventList.create({
