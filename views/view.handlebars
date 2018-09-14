@@ -10,16 +10,17 @@
     <!-- Event Info will be loaded here-->
     <div class="row">
         <div class="col-6">
+            <p>Contact Name:</p>
+            <p id="contactName"></p>
             <p>Description:</p>
-            <br>
             <p id="eventDescription"></p>
 
         </div>
         <div class="col-6">
             <p>Event Date:</p>
             <p id="eventDate"></p>
-            <p id="eventTime">6:30 PM</p>
-            <p id="eventLocation">Main Dining Room</p>
+            {{!-- <p id="eventTime">6:30 PM</p>
+            <p id="eventLocation">Main Dining Room</p> --}}
         </div>
     </div>
 
@@ -33,23 +34,7 @@
                 <th scope="col">Total Price</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th id="foodItem" scope="row">Chicken Picatta</th>
-                <td id="foodAmount">15</td>
-                <td id="foodPrice">$100.00</td>
-            </tr>
-            <tr>
-                <th id="foodItem" scope="row">Rice Pilaf</th>
-                <td id="foodAmount">15</td>
-                <td id="foodPrice">$30.00</td>
-            </tr>
-            <tr>
-                <th id="foodItem" scope="row">Grilled Vegetables</th>
-                <td id="foodAmount">15</td>
-                <td id="foodPrice">$35.00</td>
-            </tr>
-            </tbody>
+            <tbody id="orderList"></tbody>
         </table>
     <hr>
 
@@ -63,7 +48,7 @@
         </div>
         <div class="col-6">
             <p>Total Price for Event:</p>
-            <p id ="eventTotalCost">$1,650</p>
+            <p id ="eventTotalCost"></p>
         </div>
     </div>
     <button class="btn btn-secondary approve" type="submit">Approve</button>
