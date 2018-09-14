@@ -36,6 +36,21 @@ $(document).ready(function() {
                 $("#eventAdditionalInfo").text(additionalInfo);
             }
         })
+
+        //Approve Button Click
+        $(document).on("click", ".approve", function() {
+        
+            // Sending AJAX PUT Request
+            $.ajax({
+                url: '/api/eventlist/status/' + eventListId,
+                type: 'PUT',
+                data: {status: 1},
+                success: function(data) {
+                console.log(data);
+                console.log("Event Approved!");
+                }
+            });
+        });
     });
 
     // Grab and display Orderlist Information on page load
@@ -57,30 +72,7 @@ $(document).ready(function() {
                     </tr>`);
             }
             $("#eventTotalCost").text("I DON'T KNOW HOW TO GRAB IT");
-        })
+        })  
     });
 
-    // Approve Button Click
-    // $(document).on("click", ".approve", function(event) {
-    //     event.preventDefault();
-    //     // Making an Event Object for Update
-    //     let updateEvent = {
-    //         eventName: $("#eventName").val().trim(),
-    //         contactName: $("#contactName").val().trim(),
-    //         eventDate: $("#eventDate").val().trim(),
-    //         description: $("#eventDescription").val().trim(),
-    //         additionalInfo: $("#eventAdditionalInfo").val().trim(),
-    //         status: true
-    //     };
-    //     // Sending AJAX PUT Request
-    //     $.ajax({
-    //         url: '/api/eventlist/' + eventListId,
-    //         type: 'PUT',
-    //         data: updateEvent,
-    //         success: function(data) {
-    //             console.log(data);
-    //           console.log("Event Approved!");
-    //         }
-    //     });
-    // });
 });
