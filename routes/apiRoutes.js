@@ -149,7 +149,20 @@ module.exports = function (app) {
       contactName: req.body.contactName,
       eventDate: req.body.eventDate,
       description: req.body.description,
-      additionalInfo: req.body.additionalInfo,
+      additionalInfo: req.body.additionalInfo
+    }, {
+        where: {
+          id: req.params.id
+        }
+      })
+      .then(function(results) {
+        res.json(results);
+      });
+  });
+
+  //Update a Status from the EventList
+  app.put("/api/eventlist/status/:id", function (req, res) {
+    db.EventList.update({
       status: req.body.status
     }, {
         where: {
