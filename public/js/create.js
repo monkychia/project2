@@ -89,17 +89,6 @@ $(document).ready(function(){
                 foodObjectNone(restrictions, numbOfRows);
             }
         
-            //if(restrictions.glutenFree !== null && restrictions.vegan !== null && restrictions.category !== null) {
-                
-                // $.get("/api/foodObject", restrictions, function(data){
-                //     data.forEach(function(item, index) {
-                //         if (index === 0) {
-                //             ++index;
-                //             $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
-                //         }
-                //         $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
-                //     })               
-                // })
                 $(`.createNewFood-${numbOfRows}`).on('change', function() {
                     let selectedFood = $(`.createNewFood-${numbOfRows} option:selected`).text();
 
@@ -110,10 +99,8 @@ $(document).ready(function(){
                         payload.itemName = itemName;
                         payload.costPer = costPer;
                         payload.foodListId = foodListId;
-                    })
-
+                    });
                 });
-            // }
         });
 
         // Create new food field before dropdown
