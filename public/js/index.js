@@ -5,7 +5,8 @@ $(document).ready(function() {
     });
 
     $(document).on("click", ".update", function() {
-        window.location.replace("/update");
+        let url = `/update?id=${$(this).data("id")}`
+        window.location.replace(url);
     });
 
     $(document).on("click", "#create", function() {
@@ -30,7 +31,7 @@ $(document).ready(function() {
                         <p><b>Event Date:</b> ${occasionDate}</p>
                         <p><b>Description:</b> ${description}</p>
                         <p><b>Additional Information:</b> ${additionalInfo}</p>
-                        <button class="btn btn-secondary update" type="submit">Update</button>
+                        <button class="btn btn-secondary update" type="submit" data-id = ${id}>Update</button>
                         <button class="btn btn-secondary view" type="submit" data-id=${id}>View</button>
                     </div>`);
             }
