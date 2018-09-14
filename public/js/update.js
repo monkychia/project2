@@ -44,10 +44,11 @@ $(document).ready(function() {
             console.log("EventList:", data);
             //This will prefill our update forms with its data
             if(data) {
-                console.log("Event Name:", data[0].eventName);
+                //console.log("Event Name:", data[0].eventName);
                 $("#updateEventName").val(data[0].eventName);
                 $("#updateContactName").val(data[0].contactName);
-                $("#updatedate").val(data[0].eventDate);
+                var dateUpdate = moment(data[0].eventDate).format("LL");  
+                $("#updatedate").val(dateUpdate);
                 $("#updateEventDescription").val(data[0].description);
                 console.log("inside eventdata:", data[0].description);
             }
