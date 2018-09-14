@@ -36,6 +36,21 @@ $(document).ready(function() {
                 $("#eventAdditionalInfo").text(additionalInfo);
             }
         })
+
+        //Approve Button Click
+        $(document).on("click", ".approve", function() {
+        
+            // Sending AJAX PUT Request
+            $.ajax({
+                url: '/api/eventlist/status/' + eventListId,
+                type: 'PUT',
+                data: {status: 1},
+                success: function(data) {
+                console.log(data);
+                console.log("Event Approved!");
+                }
+            });
+        });
     });
 
     // Grab and display Orderlist Information on page load
@@ -45,42 +60,25 @@ $(document).ready(function() {
                 console.log(occasion);
                 let itemName = occasion.itemName;
                 let quantity = occasion.quantity;
-                let total = occasion.total.toFixed(1);
-                let totalPrice = Number(quantity * total).toFixed(2);
-                let totalEventPrice = 0;
+                let total = occasion.total;
 
                 $("#orderList").append(
                     `<tr>
                         <th id="foodItem" scope="row"> ${itemName}</th>
                         <td id="foodAmount"> ${quantity}</td>
-                        <td id="foodPrice"> ${totalPrice}</td>
+                        <td id="foodPrice"> ${total}</td>
                     </tr>`);
             }
-            $("#eventTotalCost").text("I DON'T KNOW HOW TO GRAB IT");
-        })
+        })  
     });
 
-    // Approve Button Click
-    $(document).on("click", ".approve", function(event) {
-        event.preventDefault();
-        // Making an Event Object for Update
-        let updateEvent = {
-            eventName: $("#eventName").events.eventName,
-            contactName: $("#contactName").events.contactName,
-            eventDate: $("#eventDate").events.eventDate,
-            description: $("#eventDescription").events.description,
-            additionalInfo: $("#eventAdditionalInfo").events.additionalInfo,
-            status: true
-        };
-        // Sending AJAX PUT Request
-        $.ajax({
-            url: '/api/eventlist/' + eventListId,
-            type: 'PUT',
-            data: updateEvent,
-            success: function(data) {
-                console.log(data);
-              console.log("Event Approved!");
-            }
+    $.get("/api/ordersList/" + eventListId, function(data) {
+        let totalEventPrice = 0;
+        data.forEach(occasion => {
+            let total = occasion.total;
+            totalEventPrice += total;
         });
+
+        $("#eventTotalCost").text(totalEventPrice);
     });
 });
