@@ -150,18 +150,62 @@ module.exports = function (app) {
   });
 
   //Get FoodObject with Restrictions
-  app.get("/api/foodObject/", function(req, res) {
+  app.get("/api/foodObject/vegan", function(req, res) {
     db.FoodList.findAll({
       where: {
         category: req.query.category,
-        vegan: req.query.vegan,
-        glutenFree: req.query.glutenFree
+        vegan: req.query.vegan
+        // $or: [{vegan: {$eq: req.query.vegan}},{glutenFree: {$eq: req.query.glutenFree}}] 
       }
     })
       .then(function(results) {
         res.json(results);
+        console.log(results);
+
       });
   });
+
+  app.get("/api/foodObject/glutenfree", function(req, res) {
+    db.FoodList.findAll({
+      where: {
+        category: req.query.category,
+        glutenFree: req.query.glutenFree
+        // $or: [{vegan: {$eq: req.query.vegan}},{glutenFree: {$eq: req.query.glutenFree}}] 
+      }
+    })
+      .then(function(results) {
+        res.json(results);
+        console.log(results);
+
+      });
+  });
+
+  app.get("/api/foodObject/both", function(req, res) {
+    db.FoodList.findAll({
+      where: {
+        category: req.query.category,
+        vegan: req.query.vegan,
+        glutenFree: req.query.glutenFree 
+      }
+    })
+      .then(function(results) {
+        res.json(results);
+        console.log(results);
+      });
+  });
+
+  app.get("/api/foodObject/none", function(req, res) {
+    db.FoodList.findAll({
+      where: {
+        category: req.query.category
+      }
+    })
+      .then(function(results) {
+        res.json(results);
+        console.log(results);
+      });
+  });
+
 
     //Get food row based on the food's name
     app.get("/api/foodObject/:name", function(req, res) {
