@@ -149,7 +149,8 @@ module.exports = function (app) {
       contactName: req.body.contactName,
       eventDate: req.body.eventDate,
       description: req.body.description,
-      additionalInfo: req.body.additionalInfo
+      additionalInfo: req.body.additionalInfo,
+      status: req.body.status
     }, {
         where: {
           id: req.params.id
