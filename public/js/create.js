@@ -76,29 +76,19 @@ $(document).ready(function(){
         $(`.createNewDietary-${numbOfRows}`).on('change', function() {
             let selectedDietary = $(`.createNewDietary-${numbOfRows} option:selected`).text();
             if (selectedDietary === "Vegan") {
-                restrictions.vegan = true;
-                restrictions.glutenFree = false;
+                restrictions.vegan = 1;
+                foodObjectVegan(restrictions, numbOfRows);
             } else if (selectedDietary === "Gluten Free") {
-                restrictions.glutenFree = true;
-                restrictions.vegan = false;
+                restrictions.glutenFree = 1;
+                foodObjectGluten(restrictions, numbOfRows);
             } else if (selectedDietary === "Both") {
-                restrictions.glutenFree = true;
-                restrictions.vegan = true;
+                restrictions.glutenFree = 1;
+                restrictions.vegan = 1;
+                foodObjectBoth(restrictions, numbOfRows);
             } else if (selectedDietary === "Neither") {
-                restrictions.glutenFree = false;
-                restrictions.vegan = false;
+                foodObjectNone(restrictions, numbOfRows);
             }
-
-            if(restrictions.glutenFree !== null && restrictions.vegan !== null && restrictions.category !== null) {
-                $.get("/api/foodObject", restrictions, function(data){
-                    data.forEach(function(item, index) {
-                        if (index === 0) {
-                            ++index;
-                            $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
-                        }
-                        $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
-                    })               
-                })
+        
                 $(`.createNewFood-${numbOfRows}`).on('change', function() {
                     let selectedFood = $(`.createNewFood-${numbOfRows} option:selected`).text();
 
@@ -109,10 +99,8 @@ $(document).ready(function(){
                         payload.itemName = itemName;
                         payload.costPer = costPer;
                         payload.foodListId = foodListId;
-                    })
-
+                    });
                 });
-            }
         });
 
         // Create new food field before dropdown
@@ -171,3 +159,55 @@ $(document).ready(function(){
         autoclose: true,
     });
 });
+
+function foodObjectVegan(restrictions, numbOfRows){
+
+    $.get("/api/foodObject/vegan", restrictions, function(data){
+        data.forEach(function(item, index) {
+            if (index === 0) {
+                ++index;
+                $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
+            }
+            $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
+        })               
+    })
+}
+
+function foodObjectGluten(restrictions, numbOfRows){
+
+    $.get("/api/foodObject/glutenfree", restrictions, function(data){
+        data.forEach(function(item, index) {
+            if (index === 0) {
+                ++index;
+                $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
+            }
+            $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
+        })               
+    })
+}
+
+function foodObjectBoth(restrictions, numbOfRows){
+
+    $.get("/api/foodObject/both", restrictions, function(data){
+        data.forEach(function(item, index) {
+            if (index === 0) {
+                ++index;
+                $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
+            }
+            $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
+        })               
+    })
+}
+
+function foodObjectNone(restrictions, numbOfRows){
+
+    $.get("/api/foodObject/both", restrictions, function(data){
+        data.forEach(function(item, index) {
+            if (index === 0) {
+                ++index;
+                $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', 0).text("Food")); 
+            }
+            $(`.createNewFood-${numbOfRows}`).append($("<option>").attr('value', index).text(item.itemName)); 
+        })               
+    })
+}
