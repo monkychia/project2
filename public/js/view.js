@@ -60,19 +60,25 @@ $(document).ready(function() {
                 console.log(occasion);
                 let itemName = occasion.itemName;
                 let quantity = occasion.quantity;
-                let total = occasion.total.toFixed(1);
-                let totalPrice = Number(quantity * total).toFixed(2);
-                let totalEventPrice = 0;
+                let total = occasion.total;
 
                 $("#orderList").append(
                     `<tr>
                         <th id="foodItem" scope="row"> ${itemName}</th>
                         <td id="foodAmount"> ${quantity}</td>
-                        <td id="foodPrice"> ${totalPrice}</td>
+                        <td id="foodPrice"> ${total}</td>
                     </tr>`);
             }
-            $("#eventTotalCost").text("I DON'T KNOW HOW TO GRAB IT");
         })  
     });
 
+    $.get("/api/ordersList/" + eventListId, function(data) {
+        let totalEventPrice = 0;
+        data.forEach(occasion => {
+            let total = occasion.total;
+            totalEventPrice += total;
+        });
+
+        $("#eventTotalCost").text(totalEventPrice);
+    });
 });
