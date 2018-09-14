@@ -61,26 +61,26 @@ $(document).ready(function() {
     });
 
     // Approve Button Click
-    // $(document).on("click", ".approve", function(event) {
-    //     event.preventDefault();
-    //     // Making an Event Object for Update
-    //     let updateEvent = {
-    //         eventName: $("#eventName").val().trim(),
-    //         contactName: $("#contactName").val().trim(),
-    //         eventDate: $("#eventDate").val().trim(),
-    //         description: $("#eventDescription").val().trim(),
-    //         additionalInfo: $("#eventAdditionalInfo").val().trim(),
-    //         status: true
-    //     };
-    //     // Sending AJAX PUT Request
-    //     $.ajax({
-    //         url: '/api/eventlist/' + eventListId,
-    //         type: 'PUT',
-    //         data: updateEvent,
-    //         success: function(data) {
-    //             console.log(data);
-    //           console.log("Event Approved!");
-    //         }
-    //     });
-    // });
+    $(document).on("click", ".approve", function(event) {
+        event.preventDefault();
+        // Making an Event Object for Update
+        let updateEvent = {
+            eventName: $("#eventName").events.eventName,
+            contactName: $("#contactName").events.contactName,
+            eventDate: $("#eventDate").events.eventDate,
+            description: $("#eventDescription").events.description,
+            additionalInfo: $("#eventAdditionalInfo").events.additionalInfo,
+            status: true
+        };
+        // Sending AJAX PUT Request
+        $.ajax({
+            url: '/api/eventlist/' + eventListId,
+            type: 'PUT',
+            data: updateEvent,
+            success: function(data) {
+                console.log(data);
+              console.log("Event Approved!");
+            }
+        });
+    });
 });
