@@ -161,7 +161,6 @@ $(document).ready(function(){
 });
 
 function foodObjectVegan(restrictions, numbOfRows){
-
     $.get("/api/foodObject/vegan", restrictions, function(data){
         data.forEach(function(item, index) {
             if (index === 0) {
@@ -174,7 +173,6 @@ function foodObjectVegan(restrictions, numbOfRows){
 }
 
 function foodObjectGluten(restrictions, numbOfRows){
-
     $.get("/api/foodObject/glutenfree", restrictions, function(data){
         data.forEach(function(item, index) {
             if (index === 0) {
@@ -187,7 +185,6 @@ function foodObjectGluten(restrictions, numbOfRows){
 }
 
 function foodObjectBoth(restrictions, numbOfRows){
-
     $.get("/api/foodObject/both", restrictions, function(data){
         data.forEach(function(item, index) {
             if (index === 0) {
@@ -200,8 +197,7 @@ function foodObjectBoth(restrictions, numbOfRows){
 }
 
 function foodObjectNone(restrictions, numbOfRows){
-
-    $.get("/api/foodObject/both", restrictions, function(data){
+    $.get("/api/foodObject/none", restrictions, function(data){
         data.forEach(function(item, index) {
             if (index === 0) {
                 ++index;
