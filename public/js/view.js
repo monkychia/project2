@@ -50,6 +50,11 @@ $(document).ready(function() {
                 console.log("Event Approved!");
                 }
             });
+
+            //Alerting the client an event has been approved and rerouting back to index
+            alert("Your event has been approved!");
+            window.location.replace("/");
+
         });
     });
 
