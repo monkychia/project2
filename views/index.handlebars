@@ -1,32 +1,23 @@
-<header>
-  <div class="header">
-    <h1 class="text-center">Welcome</h1>
-  </div>
-</header>
+<link rel="stylesheet" href="/styles/index-styles.css" type="text/css">
 
-<div class="row">
-  <div class="col-md-6 approved">
-    <h2>Approved Events</h2>
-    <!-- We will use jQuery in our JS Script to dynamically insert approved events in this div -->
-    <div id="approved-display">
-      <div class="occasion">
-      <p>Celebration of Life</p>
-      <button class="btn btn-secondary update" type="submit">Update</button>
-      <button class="btn btn-secondary view" type="submit">View</button>
-      </div>
+<div class="container" id="menu">
+  <header>
+    <div id="main-header">
+      <h1 class="text-center">Banquet Event Orders</h1>
     </div>
-  </div>
+  </header>
 
-  <div class="col-md-6 pending">
-    <h2>Pending Events</h2>
-    <div id="pending-display"></div>  
-  </div>
+  <h2>Approved Events</h2>
+  <!-- We will use jQuery in our JS Script to dynamically insert approved events in this div -->
+  <div id="approved-display"></div>
+
+  <!-- We will use jQuery in our JS Script to dynamically insert pending events in this div -->
+  <h2>Pending Events</h2>
+  <div id="pending-display"></div>
+
+  <button class="btn btn-secondary" type="submit" id="create">NEW EVENT</button>
+
+  <footer class="footer text-center" id="main-footer">
+    <p>Copyright &copy; 2018, Catherine Chan, Sean Cooper, Reena Mahapatra, and Danny Nguyen</p>
+  </footer>
 </div>
-
-<div class="row">
-  <button class="btn btn-primary" type="submit" id="create">NEW EVENTS</button>
-</div>
-
-<footer class="footer text-center" id="main-footer">
-  <p>Copyright &copy; 2018, Catherine Chan, Sean Cooper, Reena Mahapatra, and Danny Nguyen</p>
-</footer>

@@ -1,43 +1,55 @@
+html, body{
+  height: 100%;
+}
+
+body{
+  font-family: 'Nanum Myeongjo', serif;
+  background-image:url("../images/Ramen.jpg");
+}
+
+h3{
+  margin: 40px 0;
+}
+
+.approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
+  background-color: #565061;
+}
+
+.barrier {
+  background-color: white;
+  border: 1px black solid;
+  margin: 50px 100px;
+  padding: 10px 50px 50px 50px;
+}
+.btn-default { 
+  min-width: 180px; 
+}
+
+.container{
+  width: 960px;
+  background-color: white;
+  margin:auto;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
-.approved {
-  margin-left: 20px;
-}
-
-.pending {
-  margin-right: -20px;
-}
-
-.occasion {
-  border: 10px lightgray solid;
-  padding: 10px;
-  margin-bottom: 10px;
-  margin-right: 20px;
-}
-
 #create {
-  margin: 50px auto;
+  margin: 20px auto;
+  background-color: #565061;
+}
+
+#date, #updatedate {
+  width:410px;
+}
+
+#date-div {
+  width:10px;
 }
 
 #main-footer {
   font-size: 10px;
-}
-
-.btn-default { 
-  min-width: 180px; 
-} 
-
-.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p .bootstrap-iso form {
-  font-family: Arial, Helvetica, sans-serif;
-  color: black
-}
-
-.bootstrap-iso form button, .bootstrap-iso form button:hover {
-  color: white !important;
-}
-
-.asteriskField {
-  color: red;
+  padding: 15px 0;
+  margin-top: 100px;
 }
