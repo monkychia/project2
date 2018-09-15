@@ -1,17 +1,33 @@
 var db = require("../models");
 const nodemailer = require('nodemailer');
+var env = process.env.NODE_ENV || "development";
 
 module.exports = function (app) {
 
   function sendEmail(body) {
+    let user_cred, pass_cred;
+
+    if (env !== "development") {
+      user_cred = process.env.USER_AUTH; // Heroku setup
+      pass_cred = process.env.PASSW_AUTH;  // Heroku setup
+    } else {
+      user_cred = process.env.user_email; // development setup
+      pass_cred = process.env.user_password; // development setup
+    }
+
+    // user: "projecttwo22@gmail.com", // sender's credentials
+    // pass: "pr0ject2!"// sender's password
+    
     nodemailer.createTestAccount((err, account) => {
       let transporter = nodemailer.createTransport({
           host: 'smtp.gmail.com',
           port: 587,
           secure: false, 
           auth: {
-            user: "projecttwo22@gmail.com", // sender's credentials
-            pass: "pr0ject2!"// sender's password
+            user: user_cred, // sender's credentials
+            pass: pass_cred// sender's password
+            // user_cred = process.env.USER_AUTH;
+            // pass_cred = process.env.PASSW_AUTH;
           }
       });
 
@@ -112,19 +128,18 @@ module.exports = function (app) {
       description: req.body.description,
       additionalInfo: req.body.additionalInfo
     })
-      .then(function (results) {
-
-        let body = `<div>Hello Manager,</div>
+      .then(function(results) {
+        let message = `<div>Hello Manager,</div>
                     <div><p>We received a new event request with the followings.  Please click <a href="https://cater-app.herokuapp.com/">here</a> to approve.</p><hr/>
                       <div>
                         <p>Event Name: ${req.body.eventName}</p>
                         <p>Contact Person: ${req.body.contactName}</p>
                         <p>Event Date: ${req.body.eventDate}</p>
                         <p>Description: ${req.body.description}</p>
-                        <p>Additional Information: ${req.body.additioanlInfo}</p>
+                        <p>Additional Information: ${req.body.additionalInfo}</p>
                       </div>
                     </div>`;
-        sendEmail(body);
+        sendEmail(message);
 
         res.json(results);
       });

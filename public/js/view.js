@@ -79,6 +79,6 @@ $(document).ready(function() {
             totalEventPrice += total;
         });
 
-        $("#eventTotalCost").text(totalEventPrice);
+        $("#eventTotalCost").text(totalEventPrice.toFixed(2));
     });
 });
