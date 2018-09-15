@@ -22,6 +22,9 @@
 * Bootstrap, CSS
 * npm Nodemailer package
 
+### Deployment
+See Catering App in action at: https://cater-app.herokuapp.com/
+
 ### Team Members:
 - [x] Catherine Chan
 - [x] Danny Nguyen
