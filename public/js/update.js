@@ -168,7 +168,125 @@ $(document).ready(function() {
 
                 })
             }
-        })
+        
+
+        // Listener when add button is clicked
+        numbOfRows = ordersListData.length - 1;
+        $("#updateNewFoodRow").on("click", function(){
+        console.log("UPDATE PAGE NEW FOOD ROW CLICK");
+        numbOfRows++;
+    
+        let restrictions = {
+        "category": null,
+        "vegan": null,
+        "glutenFree": null
+    };
+
+    // Create new category dropdown
+    $(".updateNewRow").append(`
+        <div class="col-3 form-group dCategory-${numbOfRows}">
+            <label for = "category">Select Category</label>
+            <select class="custom-select updateNewCategory-${numbOfRows}">
+    `);
+    let categoryArray = [
+        {val: 0, text: "All Category"},
+        {val: 1, text: "Appetizer"}, 
+        {val: 2, text: "Entree"}, 
+        {val: 3, text: "Sides"},
+        {val: 4, text: "Dessert"}, 
+        {val: 5, text: "Kids Food"}
+    ];
+    $(categoryArray).each(function() {
+        $(`.updateNewCategory-${numbOfRows}`).append($("<option>").attr('value', this.val).text(this.text));
+    });
+
+    $(`.updateNewCategory-${numbOfRows}`).on('change', function() {
+        let selectedCategory = $(`.updateNewCategory-${numbOfRows} option:selected`).text();
+        restrictions.category = selectedCategory;
+    });
+
+    // update new dietary dropdown
+    $(".updateNewRow").append(`
+        <div class="col-3 form-group dDietary-${numbOfRows}">
+            <label for = "dietary">Select Dietary</label>
+            <select class="custom-select updateNewDietary-${numbOfRows}">
+    `);
+    let dietaryArray = [
+        {val: 0, text: "All Dietary"},
+        {val: 1, text: "Vegan"}, 
+        {val: 2, text: "Gluten Free"}, 
+        {val: 3, text: "Both"}, 
+        {val: 4, text: "Neither"}
+    ];
+    $(dietaryArray).each(function() {
+        $(`.updateNewDietary-${numbOfRows}`).append($("<option>").attr('value', this.val).text(this.text));
+    });
+
+    $(`.updateNewDietary-${numbOfRows}`).on('change', function() {
+        let selectedDietary = $(`.updateNewDietary-${numbOfRows} option:selected`).text();
+        if (selectedDietary === "Vegan") {
+            restrictions.vegan = 1;
+            foodObjectVegan(restrictions, numbOfRows);
+        } else if (selectedDietary === "Gluten Free") {
+            restrictions.glutenFree = 1;
+            foodObjectGluten(restrictions, numbOfRows);
+        } else if (selectedDietary === "Both") {
+            restrictions.glutenFree = 1;
+            restrictions.vegan = 1;
+            foodObjectBoth(restrictions, numbOfRows);
+        } else if (selectedDietary === "Neither") {
+            foodObjectNone(restrictions, numbOfRows);
+        }
+    
+            $(`.updateNewFood-${numbOfRows}`).on('change', function() {
+                let selectedFood = $(`.updateNewFood-${numbOfRows} option:selected`).text();
+
+                $.get(`/api/foodObject/${selectedFood}`, function(food) {
+                    itemName = food[0].itemName;
+                    costPer = Number(food[0].costPer);
+                    foodListId = food[0].id;
+                    payload.itemName = itemName;
+                    payload.costPer = costPer;
+                    payload.foodListId = foodListId;
+                });
+            });
+    });
+
+    // Create new food field before dropdown
+    $(".updateNewRow").append(`
+    <div class="col-2 form-group dFood-${numbOfRows}">
+        <label for = "food">Select Food</label>
+        <select class="custom-select updateNewFood-${numbOfRows}">
+    `);
+
+    // Create new Quantity field
+    $(".updateNewRow").append(`
+        <div class="col-2 quantity-${numbOfRows}">
+            <label for = "quantity">Quantity</label>
+            <input type="text" class="form-control" id="updateQuantity-${numbOfRows}">
+        </div>`)
+
+    // Create new amount field
+    $(".updateNewRow").append(`
+        <div class="col-2 total-${numbOfRows}">
+            <label for = "amount">Amount ($)</label>
+            <input type="text" class="form-control" id="total-${numbOfRows}">
+        </div>`)
+
+    // Listener when Quantity is updated
+    $(`.quantity-${numbOfRows}`).on('change', function() {
+        let numberOfOrders = Number($(`#quantity-${numbOfRows}`).val().trim());
+        let totalAmount = costPer * numberOfOrders;
+        payload.quantity = numberOfOrders;
+        payload.total = totalAmount.toFixed(2);
+        payloads.push(payload);
+        $(`#total-${numbOfRows}`).val(totalAmount.toFixed(2));
+    });
+
+})
+        
+    });
+    
 
         // Listener when the submit button is click
         $("#updateEventSubmit").on("click", function() {
