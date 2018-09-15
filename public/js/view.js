@@ -47,6 +47,8 @@ $(document).ready(function() {
                 success: function(data) {
                 console.log(data);
                 console.log("Event Approved!");
+                alert("The Event was approved!!");
+                window.location.href = "/";
                 }
             });
 
