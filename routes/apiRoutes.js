@@ -69,6 +69,17 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/api/foodList/name/:itemName", function(req, res) {
+    db.FoodList.findAll({
+      where: {
+        itemName: req.params.itemName
+      }
+    })
+    .then(function (results) {
+      res.json(results);
+    });
+  })
+
   //Create new FoodList
   app.post("/api/foodlist", function (req, res) {
     db.FoodList.create({
@@ -212,8 +223,6 @@ module.exports = function (app) {
     })
       .then(function(results) {
         res.json(results);
-        console.log(results);
-
       });
   });
 
@@ -227,8 +236,6 @@ module.exports = function (app) {
     })
       .then(function(results) {
         res.json(results);
-        console.log(results);
-
       });
   });
 
@@ -242,7 +249,6 @@ module.exports = function (app) {
     })
       .then(function(results) {
         res.json(results);
-        console.log(results);
       });
   });
 
@@ -254,24 +260,21 @@ module.exports = function (app) {
     })
       .then(function(results) {
         res.json(results);
-        console.log(results);
       });
   });
 
 
-    //Get food row based on the food's name
-    app.get("/api/foodObject/:name", function(req, res) {
-      console.log(req.params.name);
-
-      db.FoodList.findAll({
-        where: {
-          itemName: req.params.name
-        }
-      })
-        .then(function(results) {
-          res.json(results);
-        });
-    });
+  //Get food row based on the food's name
+  app.get("/api/foodObject/:name", function(req, res) {
+    db.FoodList.findAll({
+      where: {
+        itemName: req.params.name
+      }
+    })
+      .then(function(results) {
+        res.json(results);
+      });
+  });
   
   // Get all events with corresponding orders
   app.get("/api/orderslist", function(req, res) {
@@ -286,6 +289,18 @@ module.exports = function (app) {
     db.OrdersList.findAll({
       where: {
         eventListId: req.params.eventListId
+      }
+    })
+    .then(function(results) {
+      res.json(results);
+    });
+  });
+
+  // Get 1 order
+  app.get("/api/ordersList/order/:id", function(req, res) {
+    db.OrdersList.findAll({
+      where: {
+        id: req.params.id,
       }
     })
     .then(function(results) {
@@ -308,4 +323,21 @@ module.exports = function (app) {
     });
   });
 
+  // Update order list
+  app.put("/api/ordersList/:orderListId", function(req, res) {
+    db.OrdersList.update({
+      itemName: req.body.itemName,
+      quantity: req.body.quantity,
+      total: req.body.total,
+      costPer: req.body.costPer,
+      foodListId: req.body.foodListId
+    }, {
+        where: {
+          id: req.params.orderListId,
+        }
+      })
+      .then(function (results) {
+        res.json(results);
+      });
+  });
 };

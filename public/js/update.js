@@ -26,8 +26,8 @@ $(document).ready(function() {
                     let dataQty = order.quantity;
                     let dataTotal = order.total;
                     let foodListId = order.foodListId;
-                    let packet = {};
-                    let packets = [];
+                    let dataCostPer = parseFloat(order.costPer);
+                    let id = parseInt(order.id);
 
                     /* Start creating additional dropdowns and fields */
                     let requirements = {
@@ -86,6 +86,8 @@ $(document).ready(function() {
 
                             $(".dataCategory-" + i + " option:contains(" + c + ")").attr('selected', 'selected');
 
+                            $(`.dataCategory-${i}`).attr("disabled","disabled");
+
                             if (v && g) {
                                 b = "Both";
                                 requirements.vegan = 1;
@@ -107,6 +109,8 @@ $(document).ready(function() {
                             }
 
                             $(".dataDietary-" + i + " option:contains(" + b + ")").attr('selected', 'selected');
+
+                            $(`.dataDietary-${i}`).attr("disabled","disabled");
                         });
                     })
 
@@ -126,6 +130,42 @@ $(document).ready(function() {
                         <input type="text" class="form-control" id="dataTotal-${i}">
                     </div>`)
                     $(`#dataTotal-${i}`).val(dataTotal);
+
+                    let packet = {};
+                    packet.quantity = dataQty;
+                    packet.total = dataTotal;
+                    packet.itemName = dataFood;
+                    packet.costPer = dataCostPer;
+                    packet.foodListId = foodListId;
+
+                    // Listener to Select Food field
+                    $(`.dataFood-${i}`).on('change', function() {
+                        let selectedFood = $(`.dataFood-${i} option:selected`).text();
+                        packet.itemName = selectedFood;
+
+                        $.get(`/api/foodList/name/${selectedFood}`, function(data) {
+                            costPer = data[0].costPer;
+                            packet.costPer = costPer;
+                            packet.foodListId = data[0].id;
+                            packet.total = 0.00;
+                            packet.quantity = 0.00;
+                        });
+
+                        $(`#quantity-${i}`).val('');
+                        $(`#dataTotal-${i}`).val('');
+                        updateOrder(id, packet);
+                    });
+
+                    // Listener when Quantity is updated
+                    $(`.quantity-${i}`).on('change', function() {
+                        let numberOfOrders = Number($(`#quantity-${i}`).val().trim());
+                        let totalAmount = dataCostPer * numberOfOrders;
+                        packet.quantity = numberOfOrders;
+                        packet.total = totalAmount;
+                        updateOrder(id, packet);
+                        $(`#dataTotal-${i}`).val(totalAmount.toFixed(2));
+                    });
+
                 })
             }
         })
@@ -146,10 +186,19 @@ $(document).ready(function() {
                 type: 'PUT',
                 data: updateEvent,
                 success: function(data) {
-                window.location.href = "/";
+                    window.location.href = "/";
                 }
             });
         });
+    }
+
+    function updateOrder(orderListId, packet){
+        $.ajax({
+            url: `/api/orderslist/${orderListId}`,
+            type: "PUT",
+            data: packet,
+            success: function(data) {}
+        })
     }
 
     function getParameterByName(name, url) {

@@ -45,17 +45,10 @@ $(document).ready(function() {
                 type: 'PUT',
                 data: {status: 1},
                 success: function(data) {
-                console.log(data);
-                console.log("Event Approved!");
-                alert("The Event was approved!!");
-                window.location.href = "/";
+                    alert("The Event has been approved!!");
+                    window.location.href = "/";
                 }
             });
-
-            //Alerting the client an event has been approved and rerouting back to index
-            alert("Your event has been approved!");
-            window.location.replace("/");
-
         });
     });
 
