@@ -69,7 +69,7 @@ $(document).ready(function() {
                     `<tr>
                         <th id="foodItem" scope="row"> ${itemName}</th>
                         <td id="foodAmount"> ${quantity}</td>
-                        <td id="foodPrice"> ${total}</td>
+                        <td id="foodPrice"> ${'$'+total}</td>
                     </tr>`);
             }
         })  
@@ -82,6 +82,6 @@ $(document).ready(function() {
             totalEventPrice += total;
         });
 
-        $("#eventTotalCost").text(totalEventPrice.toFixed(2));
+        $("#eventTotalCost").text("$" +totalEventPrice.toFixed(2));
     });
 });
