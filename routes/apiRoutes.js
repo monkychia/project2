@@ -298,7 +298,6 @@ module.exports = function (app) {
 
   // Get 1 order
   app.get("/api/ordersList/order/:id", function(req, res) {
-    console.log('oiasudfsd-----------');
     db.OrdersList.findAll({
       where: {
         id: req.params.id,
@@ -326,9 +325,6 @@ module.exports = function (app) {
 
   // Update order list
   app.put("/api/ordersList/:orderListId", function(req, res) {
-
-    console.log('i am here');
-
     db.OrdersList.update({
       itemName: req.body.itemName,
       quantity: req.body.quantity,

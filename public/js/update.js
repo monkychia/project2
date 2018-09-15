@@ -151,8 +151,6 @@ $(document).ready(function() {
                             packet.quantity = 0.00;
                         });
 
-                        console.log(packet);
-
                         $(`#quantity-${i}`).val('');
                         $(`#dataTotal-${i}`).val('');
                         updateOrder(id, packet);
