@@ -166,10 +166,8 @@ $(document).ready(function() {
                         $(`#dataTotal-${i}`).val(totalAmount.toFixed(2));
                     });
 
-                })
+                });
             }
-        
-
         // Listener when add button is clicked
         numbOfRows = ordersListData.length - 1;
         $("#updateNewFoodRow").on("click", function(){
@@ -281,11 +279,9 @@ $(document).ready(function() {
         payload.total = totalAmount.toFixed(2);
         payloads.push(payload);
         $(`#total-${numbOfRows}`).val(totalAmount.toFixed(2));
+        });
     });
-
-})
-        
-    });
+});
     
 
         // Listener when the submit button is click
