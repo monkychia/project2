@@ -1,7 +1,6 @@
 $(document).ready(function() {
     // Get the query string from url
     let eventListId = getParameterByName("id");
-    // console.log(eventListId);
 
     eventListId = Number(eventListId);
 
@@ -62,7 +61,6 @@ $(document).ready(function() {
     $.get("/api/orderslist", function(data) {
         data.forEach(occasion => {
             if (occasion.eventListId === eventListId) {
-                console.log(occasion);
                 let itemName = occasion.itemName;
                 let quantity = occasion.quantity;
                 let total = occasion.total;
