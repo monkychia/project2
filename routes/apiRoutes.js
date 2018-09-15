@@ -57,6 +57,18 @@ module.exports = function (app) {
       });
   });
 
+  // Get 1 Foodlist by Foodlist ID
+  app.get("/api/foodlist/:id", function (req, res) {
+    db.FoodList.findAll({
+      where: {
+        id: req.params.id
+      }
+    })
+    .then(function (results) {
+      res.json(results);
+    });
+  });
+
   //Create new FoodList
   app.post("/api/foodlist", function (req, res) {
     db.FoodList.create({
