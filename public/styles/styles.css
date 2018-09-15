@@ -11,7 +11,7 @@ h3{
   margin: 40px 0;
 }
 
-.approve, .cancel, .update, .view {
+.approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
   background-color: #565061;
 }
 
