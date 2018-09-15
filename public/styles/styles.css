@@ -44,16 +44,12 @@ h3{
   width:410px;
 }
 
-#date-div {
-  width:10px;
-}
-
 #main-footer {
   font-size: 10px;
   padding: 15px 0;
   margin-top: 100px;
 }
 
-#notTooWide{
+#notTooWide {
   max-width: 460px;
 }
