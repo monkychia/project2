@@ -1,10 +1,8 @@
 $(document).ready(function() {
     let updatePage = window.location.pathname;
-    console.log(updatePage);
     if (updatePage === '/update') {
         let updateId = getParameterByName("id");
         updateId = Number(updateId);
-        console.log('DEBUG: URL id: ', updateId);
 
         //Get eventData for the current event for updating
         $.get(`/api/eventlist/${updateId}`, function(eventListData) {
@@ -23,7 +21,6 @@ $(document).ready(function() {
 
         $.get(`/api/ordersList/${updateId}`, function(ordersListData) {
             if (ordersListData.length > 0) {
-                console.log('=========== 26', ordersListData.length);
                 ordersListData.forEach(function(order, i) {
                     let dataFood = order.itemName;
                     let dataQty = order.quantity;
@@ -149,7 +146,6 @@ $(document).ready(function() {
                 type: 'PUT',
                 data: updateEvent,
                 success: function(data) {
-                console.log("PUT", data);
                 window.location.href = "/";
                 }
             });
