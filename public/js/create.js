@@ -3,6 +3,15 @@ let eventListId = 0;
 let payloads = [];
 
 $(document).ready(function(){
+    var $loading = $('.loading').hide();
+    $(document)
+        .ajaxStart(function () {
+        $loading.show();
+    })
+        .ajaxStop(function () {
+        $loading.hide();
+    });
+
     $("#newFoodRow").on("click", function(){
         let payload = {};
         if (eventListId === 0) {
@@ -89,18 +98,18 @@ $(document).ready(function(){
                 foodObjectNone(restrictions, numbOfRows);
             }
         
-                $(`.createNewFood-${numbOfRows}`).on('change', function() {
-                    let selectedFood = $(`.createNewFood-${numbOfRows} option:selected`).text();
+            $(`.createNewFood-${numbOfRows}`).on('change', function() {
+                let selectedFood = $(`.createNewFood-${numbOfRows} option:selected`).text();
 
-                    $.get(`/api/foodObject/${selectedFood}`, function(food) {
-                        itemName = food[0].itemName;
-                        costPer = Number(food[0].costPer);
-                        foodListId = food[0].id;
-                        payload.itemName = itemName;
-                        payload.costPer = costPer;
-                        payload.foodListId = foodListId;
-                    });
+                $.get(`/api/foodObject/${selectedFood}`, function(food) {
+                    // itemName = food[0].itemName;
+                    costPer = Number(food[0].costPer);
+                    foodListId = food[0].id;
+                    payload.itemName = selectedFood;
+                    payload.costPer = costPer;
+                    payload.foodListId = foodListId;
                 });
+            });
         });
 
         // Create new food field before dropdown
@@ -137,16 +146,19 @@ $(document).ready(function(){
 
     // Eventlistener to POST New Event into DB upon Submit Button Click on Create Page
     $("#newEventSubmit").on("click", function() {
-        payloads.forEach(item => {
+        let counter = 0;
+        payloads.forEach(function(item, index) {
             $.post("/api/ordersList", item)
-            .then(function(data) {
-                // DO NOTHING
-            })
+                .then(function(data) {
+                    counter++;
+                    if (counter === payloads.length) {
+                        // Redirect to View page
+                        let eventListId = payloads[0].eventListId;
+                        let url = `/view?id=${eventListId}`;
+                        window.location.replace(url);
+                    }
+                })
         })
-        // Redirect to View page
-        let eventListId = payloads[0].eventListId;
-        let url = `/view?id=${eventListId}`;
-        window.location.replace(url);
     });
 
     // Date picker
