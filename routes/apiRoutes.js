@@ -255,7 +255,9 @@ module.exports = function (app) {
   app.get("/api/foodObject/none", function(req, res) {
     db.FoodList.findAll({
       where: {
-        category: req.query.category
+        category: req.query.category,
+        vegan: 0,
+        glutenFree: 0
       }
     })
       .then(function(results) {
@@ -318,9 +320,12 @@ module.exports = function (app) {
       costPer: req.body.costPer,
       total: req.body.total
     })
-    .then(function (results) {
+    .then(function(results) {
       res.json(results);
-    });
+    })
+    .catch((err) => {
+      console.log(`Error from POST orderList ${e}`);
+    })
   });
 
   // Update order list

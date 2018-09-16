@@ -53,3 +53,7 @@ h3{
 #notTooWide {
   max-width: 571px;
 }
+
+.spinner {
+  font-size: 48px;
+}
