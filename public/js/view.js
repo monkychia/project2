@@ -58,7 +58,7 @@ $(document).ready(function() {
             if (occasion.eventListId === eventListId) {
                 let itemName = occasion.itemName;
                 let quantity = occasion.quantity;
-                let total = occasion.total;
+                let total = occasion.total.toFixed(2);
 
                 $("#orderList").append(
                     `<tr>
