@@ -33,7 +33,7 @@ $(document).ready(function() {
                             <p><b>Description:</b> ${description}</p>
                             <p><b>Additional Information:</b> ${additionalInfo}</p>
                             <button class="btn btn-secondary update" type="submit" data-id = ${id}>Update</button>
-                            <button class="btn btn-secondary view" type="submit" data-id=${id}>View</button>
+                            <button class="btn btn-secondary view"  id = "view-pos" type="submit" data-id=${id}>View</button>
                         </div>`);
                 } else {
                     let occasionName = occasion.eventName;

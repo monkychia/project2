@@ -1,5 +1,4 @@
 <link rel="stylesheet" href="/styles/index-styles.css" type="text/css">
-
 <div class="container" id="menu">
   <header>
     <div id="main-header">
@@ -11,13 +10,20 @@
   <h2 class = "niceFont">Approved Events</h2>
   <img src="images/index-divider2.png" alt="divider2" width="20%" height="5%" > <img src="images/index-divider2.png" alt="divider2" width="20%" height="5%" > <img src="images/index-divider2.png" alt="divider2" width="20%" height="5%" >
   <!-- We will use jQuery in our JS Script to dynamically insert approved events in this div -->
-  <div id="approved-display"></div>
-
+  <div class = "row">
+    <div class = "col-12">
+      <div id="approved-display"></div>
+    </div>
+  </div>
   <!-- We will use jQuery in our JS Script to dynamically insert pending events in this div -->
   <h2 class = "niceFont">Pending Events</h2>
   <img src="images/index-divider2.png" alt="divider5" width="20%" height="5%" > <img src="images/index-divider2.png" alt="divider2" width="20%" height="5%" > <img src="images/index-divider2.png" alt="divider2" width="20%" height="5%" >
-  <div id="pending-display"></div>
-
+  <div class = "row">
+    <div class = "col-12">
+      <div id="pending-display"></div>
+    </div>
+  </div>
+  
   <button class="btn btn-secondary" type="submit" id="create">NEW EVENT</button>
   <br>
   <img src="images/index-divider1.png" alt="divider1" width="20%" height="3%" > <img src="images/index-divider1.png" alt="divider1" width="20%" height="3%" >

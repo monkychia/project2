@@ -1,55 +1,257 @@
-html, body{
-  height: 100%;
+/* @media only screen and (max-width: 982px) { */
+  html, body{
+    height: 100%;
+  }
+  
+  body{
+    font-family: 'Nanum Myeongjo', serif;
+    background-image:url("../images/Ramen.jpg");
+  }
+  
+  h3{
+    margin: 40px 0;
+  }
+  
+  .approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
+    background-color: #565061;
+  }
+  
+  .barrier {
+    background-color: white;
+    border: 1px black solid;
+    margin: 50px 100px;
+    padding: 10px 50px 50px 50px;
+  }
+  .btn-default { 
+    min-width: 180px; 
+  }
+  
+  .container{
+    width: 100%;
+    background-color: white;
+    margin:auto;
+  }
+  
+  .list-group-item {
+    line-height: 2.5;
+  }
+  
+  #create {
+    margin: 20px auto;
+    background-color: #565061;
+  }
+  
+  #date, #updatedate {
+    width:100%;
+  }
+  
+  #main-footer {
+    font-size: 10px;
+    padding: 15px 0;
+    margin-top: 100px;
+  }
+  
+  #notTooWide {
+    max-width: 100%;
+  }  
+/* } */
+
+#responsiveTable {
+  border-collapse: collapse;
 }
 
-body{
-  font-family: 'Nanum Myeongjo', serif;
-  background-image:url("../images/Ramen.jpg");
-}
 
-h3{
-  margin: 40px 0;
-}
 
-.approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
-  background-color: #565061;
-}
+ @media only screen and (max-width: 768px) { 
+  html, body{
+    height: 100%;
+  }
+  
+  body{
+    font-family: 'Nanum Myeongjo', serif;
+    background-image:url("../images/Ramen.jpg");
+  }
+  
+  h3{
+    margin: 30px 0;
+  }
+  
+  .approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
+    background-color: #565061;
+  }
+  
+  .barrier {
+    background-color: white;
+    border: 1px black solid;
+    margin: 30px 15px;
+    padding: 10px 25px 25px 25px;
+  }
+  .btn-default { 
+    min-width: 120px; 
+  }
+  
+  .container{
+    width: 100%;
+    background-color: white;
+    margin:auto;
+  }
+  
+  .list-group-item {
+    line-height: 2.5;
+  }
 
-.barrier {
-  background-color: white;
-  border: 1px black solid;
-  margin: 50px 100px;
-  padding: 10px 50px 50px 50px;
-}
-.btn-default { 
-  min-width: 180px; 
-}
+  #create {
+    margin: 20px auto;
+    background-color: #565061;
+  }
+  
+  #date {
+    width:100%;
+  }
+  #updatedate{
+    width: 100%;
+  }
+  
+  #main-footer {
+    font-size: 10px;
+    padding: 15px 0;
+    margin-top: 100px;
+  }
+  
+  #notTooWide {
+    max-width: 100%;
+  }  
+} 
 
-.container{
-  width: 960px;
-  background-color: white;
-  margin:auto;
-}
+@media only screen and (max-width: 640px) { 
+  html, body{
+    height: 100%;
+  }
+  
+  body{
+    font-family: 'Nanum Myeongjo', serif;
+    background-image:url("../images/Ramen.jpg");
+  }
+  
+  h3{
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  h2{
+    font-size: 25px;
+  }
 
-.list-group-item {
-  line-height: 2.5;
-}
+  .approve, .cancel, .update, .view, #newEventSubmit, #newFoodRow {
+    background-color: #565061;
+  }
 
-#create {
-  margin: 20px auto;
-  background-color: #565061;
-}
+  #approved-display, #pending-display {
+    margin:auto;
+    font-size: 20px;
+  }
+  
+  .barrier {
+    background-color: white;
+    border: 1px black solid;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px; 
+    padding: 10px 50px 50px 50px;
+    font-size: 15px;
+  }
+  #updateEventName{ 
+    float: right;
+  }
+  #diet, #food, #qty, #amt{
+    float: left;
+  }
+  #view-detail, th {
+    font-size: 15px;
+  }
 
-#date, #updatedate {
-  width:410px;
-}
+  #responsiveTable,
+  #responsiveTable tbody,
+  #responsiveTable tr,
+  #responsiveTable td {
+    display: block;
+  }
 
-#main-footer {
-  font-size: 10px;
-  padding: 15px 0;
-  margin-top: 100px;
-}
+  tr:nth-of-type(odd) {
+    background: lightgrey;
+  }
 
-#notTooWide {
-  max-width: 571px;
-}
+  tr:nth-of-type(even) {
+    background: white;
+  }
+
+  #headRow {
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+  }
+  #responsiveTable td {
+    border: solid;
+    position: relative;
+    padding-left:40%;
+    white-space: normal;
+    text-align: left;
+  }
+  
+  #responsiveTable td:before {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 40%;
+    padding-right: 10px;
+    white-space: nowrap;
+    text-align: left;
+    font-weight: bold;
+    content: attr(tableHeadData);
+  }
+
+  .btn-default { 
+    min-width: 90px; 
+  }
+
+  #cancel-pos{
+    float: right;
+  }
+
+  .approve, .cancel {
+    min-width: auto;
+    font-size: 15px;
+  }
+  
+  .container{
+    width: 100%;
+    background-color: white;
+    margin:auto;
+  }
+  
+  .list-group-item {
+    line-height: 2.5;
+  }
+  
+  #create {
+    margin: 20px auto;
+    background-color: #565061;
+  }
+  
+  #date{
+    width:110px;
+  }
+  #updatedate{
+    width: 110px;
+  }
+  
+  #main-footer {
+    font-size: 10px;
+    padding: 15px 0;
+    margin-top: 100px;
+  }
+  
+  #notTooWide {
+    max-width: 100%;
+  }  
+} 

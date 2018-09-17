@@ -1,6 +1,6 @@
 <div class="barrier">
-    <div class="container">
-        <div class="row">
+    <div class="container" id = "view-detail">
+                        <div class="row">
             <!--  This first row just contains event title-->
             <div class="col-12">
                 <div class="text-center top-header">
@@ -26,10 +26,10 @@
         </div>
 
         <!-- Table with each item/amount and cost will be generated here-->
-        <div class="container" style="margin-top:2%">
-            <table class="table">
+        <div class="container" style="margin-top:2%, overflow-x:auto;">
+                <table class="table" id = "responsiveTable">
                 <thead class="thead-dark">
-                    <tr>
+                    <tr id = "headRow">
                         <th scope="col">Food Item</th>
                         <th scope="col">Servings Requested</th>
                         <th scope="col">Total Price</th>
@@ -43,19 +43,26 @@
             <!-- Also going to calculate and display total price of items here-->
             <div class="container">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <p>Additional Info:</p>
                         <p id="eventAdditionalInfo"></p>
                     </div>
-                    <div class="col-6">
+                    <div class="col-md-6 col-sm-12">
                         <p>Total Price for Event:</p>
                         <p id="eventTotalCost"></p>
                     </div>
                 </div>
-                <button class="btn btn-secondary approve" type="submit">Approve</button>
-                <button class="btn btn-secondary cancel" type="submit">Cancel</button>
+                <div class = "row">
+                    <div class = "col-12">
+                        <button class="btn btn-secondary approve" type="submit">Approve</button>
+                <button class="btn btn-secondary cancel" id = "cancel-pos" type="submit">Cancel</button>
+                    </div>
+                </div>
+                
             </div>
+
         </div>
+  
     </div>
     <footer class="footer text-center" id="main-footer">
     <p>Copyright &copy; 2018, Catherine Chan, Sean Cooper, Reena Mahapatra, and Danny Nguyen</p>

@@ -16,7 +16,7 @@ $(document).ready(function() {
                 $("#updateEventAdditional").val(eventListData[0].additionalInfo);
             } else {
                 console.log('Error.  Cannot load Update page.');
-            }
+            }            
         });
 
         $.get(`/api/ordersList/${updateId}`, function(ordersListData) {
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
                     // Create new category dropdown
                     $(".updateNewRow").append(`
-                        <div class="col-3 form-group dCategory-${i}">
+                        <div class="col-md-3 col-sm-12 form-group dCategory-${i}">
                             <label for = "category">Select Category</label>
                             <select class="custom-select dataCategory-${i}">
                     `);
@@ -56,7 +56,7 @@ $(document).ready(function() {
 
                     // Create new dietary dropdown
                     $(".updateNewRow").append(`
-                    <div class="col-3 form-group dDietary-${i}">
+                    <div class="col-md-3 col-sm-6 form-group dDietary-${i}"  id = "diet">
                         <label for = "dietary">Select Dietary</label>
                         <select class="custom-select dataDietary-${i}">
                         `);
@@ -73,7 +73,7 @@ $(document).ready(function() {
 
                     // Create new food field before dropdown
                     $(".updateNewRow").append(`
-                    <div class="col-2 form-group dFood-${i}">
+                    <div class="col-md-2 col-sm-6 form-group dFood-${i}"  id = "food">
                         <label for = "food">Select Food</label>
                         <select class="custom-select dataFood-${i}">
                     `);
@@ -112,7 +112,7 @@ $(document).ready(function() {
 
                     // Create new Quantity field
                     $(".updateNewRow").append(`
-                    <div class="col-2 quantity-${i}">
+                    <div class="col-md-2 col-sm-6 quantity-${i}" id = "qty">
                         <label for = "quantity">Quantity</label>
                         <input type="text" class="form-control" id="quantity-${i}">
                     </div>`)
@@ -121,7 +121,7 @@ $(document).ready(function() {
 
                     // Create new amount field
                     $(".updateNewRow").append(`
-                    <div class="col-2 total-${i}">
+                    <div class="col-md-2 col-sm-6 total-${i}" id = "amt">
                         <label for = "amount">Amount ($)</label>
                         <input type="text" class="form-control" id="dataTotal-${i}">
                     </div>`)

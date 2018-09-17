@@ -36,7 +36,7 @@ $(document).ready(function(){
 
         // Create new category dropdown
         $(".newRow").append(`
-            <div class="col-3 form-group newCategory-${numbOfRows}">
+            <div class="col-md-3 col-sm-12 form-group newCategory-${numbOfRows}">
                 <label for = "category">Select Category</label>
                 <select class="custom-select createNewCategory-${numbOfRows}">
         `);
@@ -59,7 +59,7 @@ $(document).ready(function(){
 
         // Create new dietary dropdown
         $(".newRow").append(`
-            <div class="col-3 form-group newDietary-${numbOfRows}">
+            <div class="col-md-3 col-sm-6 form-group newDietary-${numbOfRows}">
                 <label for = "dietary">Select Dietary</label>
                 <select class="custom-select createNewDietary-${numbOfRows}">
         `);
@@ -105,21 +105,21 @@ $(document).ready(function(){
 
         // Create new food field before dropdown
         $(".newRow").append(`
-        <div class="col-2 form-group newFood-${numbOfRows}">
+        <div class="col-md-2 col-sm-6 form-group newFood-${numbOfRows}">
             <label for = "food">Select Food</label>
             <select class="custom-select createNewFood-${numbOfRows}">
         `);
 
         // Create new Quantity field
         $(".newRow").append(`
-            <div class="col-2 quantity-${numbOfRows}">
+            <div class="col-md-2 col-sm-6 quantity-${numbOfRows}">
                 <label for = "quantity">Quantity</label>
                 <input type="text" class="form-control" id="quantity-${numbOfRows}">
             </div>`)
 
         // Create new amount field
         $(".newRow").append(`
-            <div class="col-2 total-${numbOfRows}">
+            <div class="col-md-2 col-sm-6 total-${numbOfRows}">
                 <label for = "amount">Amount ($)</label>
                 <input type="text" class="form-control" id="total-${numbOfRows}">
             </div>`)

@@ -1,36 +1,39 @@
-h1 {
-  font-size: 45px;
-  margin-top: 40px;
-  margin-bottom: 20px;
-  font-weight: bolder
-}
 
-.container{
-  width: 960px;
-  background-color: white;
-  margin:auto;
-}
+  h1 {
+    font-size: 45px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-weight: bolder
+  }
+  
+  .container{
+    width: 960px;
+    background-color: white;
+    margin:auto;
+  }
+  
+  .occasion {
+    padding: 10px;
+    margin: 20px 150px;
+  }
+  
+  #menu {
+    text-align: center;
+    border: 3px rgba(10, 10, 10, 0.708) solid;
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+  
+  #main-footer {
+    font-size: 10px;
+    padding: 15px 0;
+    margin-top: 20px;
+  }
+  
+  .niceFont{
+    font-weight: bold;
+    font-size: 38px;
+    margin-bottom: 25px;
+  }
 
-.occasion {
-  padding: 10px;
-  margin: 20px 150px;
-}
 
-#menu {
-  text-align: center;
-  border: 3px rgba(10, 10, 10, 0.708) solid;
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-#main-footer {
-  font-size: 10px;
-  padding: 15px 0;
-  margin-top: 20px;
-}
-
-.niceFont{
-  font-weight: bold;
-  font-size: 38px;
-  margin-bottom: 25px;
-}

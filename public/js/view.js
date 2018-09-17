@@ -69,9 +69,9 @@ $(document).ready(function() {
 
                 $("#orderList").append(
                     `<tr>
-                        <th id="foodItem" scope="row"> ${itemName}</th>
-                        <td id="foodAmount"> ${quantity}</td>
-                        <td id="foodPrice">$ ${total}</td>
+                        <td tableHeadData = "food item" id="foodItem" scope="row"> ${itemName}</th>
+                        <td tableHeadData = "quantity" id="foodAmount"> ${quantity}</td>
+                        <td tableHeadData = "amount" id="foodPrice">$ ${total}</td>
                     </tr>`);
             }
         })  
